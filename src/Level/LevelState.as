@@ -302,7 +302,9 @@ package Level
       _bonusBack.y = _bonusBar.y - 1;
       trace(_bonusTimer)
      if (_bonusTimer > 0.5) {
-        _bonusBack.alpha = 0.3;
+        if (_bonusBack.alpha < 0.3 ){
+          _bonusBack.alpha = 0.3;
+        }
         _bonusBar.scaleX = ((_bonusTimer - 0.5) / 2) * 25;
         _bonusBar.color = Color.argb(255, (1 - ((_bonusTimer - 0.5) / 2)) * 255, ((_bonusTimer - 0.5) / 2) * 255, 0);
         
@@ -349,7 +351,7 @@ package Level
             expoCounter++;
             _score += fib;
             var randColor:uint = Color.argb(256, Math.floor(Math.random() * 100) + 155, Math.floor(Math.random() * 255), Math.floor(Math.random() * 256));
-            showPoints(egg, '+' + String(fib),  randColor);
+            showPoints(egg, '+' + String(fib), 30, randColor);
             temp = fib;
             fib += prefib;
             prefib = temp;

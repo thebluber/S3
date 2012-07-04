@@ -48,6 +48,9 @@ package engine {
       }
       return unlocked;
     }
+    public static function get levels():Object{
+      return _sharedObject.data.levels;
+    }
 
     public static function levelUnlocked(n:Number):Boolean {
       return _sharedObject.data.levels[n].unlocked;
@@ -59,8 +62,9 @@ package engine {
       _sharedObject.flush();
     } 
 
-    public static function saveScore(n:Number, score:Number):void {
+    public static function saveScore(n:Number, score:Number, medal:String):void {
       _sharedObject.data.levels[n].score = score;
+      _sharedObject.data.levels[n]["medal"] = medal;
       _sharedObject.flush();
       publishScore(n);
     }

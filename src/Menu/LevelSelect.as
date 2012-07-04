@@ -2,6 +2,9 @@ package Menu
 {
   import engine.ManagedStage;
   import flash.geom.Point;
+  import starling.text.TextField;
+  import starling.utils.Color;
+  import starling.utils.HAlign;
   import starling.display.Button;
   import starling.display.DisplayObject;
   import starling.display.Image;
@@ -25,6 +28,9 @@ package Menu
   {
     private var _bg:Quad;
     private var _levelInfo:Sprite;
+    private var _scoreInfo:TextField;
+    private var _medalInfo:Image;
+
     private var _showingInfo:Boolean;
     private var _levelName:Image;
     private var _scrollable:Sprite;
@@ -166,7 +172,14 @@ package Menu
             {
               _levelInfo.removeChild(_levelName);
               _levelName.dispose();
-              
+              if (_scoreInfo) {
+                _levelInfo.removeChild(_scoreInfo);
+                _scoreInfo.dispose()
+              } 
+              if (_medalInfo){
+                _levelInfo.removeChild(_medalInfo);
+                _medalInfo.dispose();
+              }
               _levelName = new Image(AssetRegistry.LevelSelectAtlas.getTexture("text-info-level" + String(level)));
               _levelName.x += 85;
               _levelName.y += 85;
@@ -174,6 +187,20 @@ package Menu
               _levelInfo.addChild(_levelName);
               _levelInfo.x = (Starling.current.stage.stageWidth - _levelInfo.width) / 2;
               _levelInfo.y = (Starling.current.stage.stageHeight - _levelInfo.height) / 2;
+              if (SaveGame.levels[level].score != 0) {
+                _scoreInfo = new TextField(120, 40, String(SaveGame.levels[level].score),"kroeger 06_65", 35, Color.WHITE);
+                _scoreInfo.hAlign = HAlign.LEFT;
+                _scoreInfo.x = _levelInfo.x + 410;
+                _scoreInfo.y = _levelInfo.y + 220;
+                _levelInfo.addChild(_scoreInfo);
+                trace(SaveGame.levels[level].medal);
+                if (SaveGame.levels[level].medal) {
+                  _medalInfo = new Image(AssetRegistry.ScoringAtlas.getTexture(SaveGame.levels[level].medal));
+                  _medalInfo.x = _levelInfo.x + 100;
+                  _medalInfo.y = _levelInfo.y + 100;
+                  _levelInfo.addChild(_medalInfo);
+                }
+              }         
               _levelInfo.addEventListener(TouchEvent.TOUCH, function(event:TouchEvent):void
                 {
                   var touch:Touch = event.getTouch(that, TouchPhase.ENDED);
@@ -183,11 +210,11 @@ package Menu
                       _showingInfo = false;
                       that.removeChild(_levelInfo);
                     } else {
-                      if (level == 1) {
-                        StageManager.switchStage(AssetRegistry.LEVELS[level - 1], null, "test.flv");
-                      } else {
-                        StageManager.switchStage(AssetRegistry.LEVELS[level - 1]);
-                      }
+                      //if (level == 1) {
+                       // StageManager.switchStage(AssetRegistry.LEVELS[level - 1], null, "test.flv");
+                      //} else {
+                       StageManager.switchStage(AssetRegistry.LEVELS[level - 1]);
+                      //}
                     }
                   }
                 });

@@ -59,6 +59,7 @@ package Menu
     private var _medal:Image;
     private var _medalTween:GTween;
     private var _medalSmall:Image;
+    private var _medalInfo:String = "bronze_small";
     
     public function LevelScore(scores:Object = null)
     {
@@ -77,9 +78,6 @@ package Menu
       _timeBonus = Math.max(_timeBonus, 0);
       
       _scores.total += (_timeBonus * 5);
-      if(!_scores.lost) {
-        SaveGame.saveScore(_scores.level, _scores.score);
-      }
       AssetRegistry.loadScoringGraphics();
       buildMenu();
       startScoring();
@@ -197,21 +195,25 @@ package Menu
         _medal.x = -800;
         _medal.y = 0;
         _medalSmall = new Image(AssetRegistry.ScoringAtlas.getTexture("bronze_small"));
+        _medalInfo = "bronze_small";
       } else if (_scores.total >= 600 && _scores.total < 800) {
         _medal = new Image(AssetRegistry.ScoringAtlas.getTexture("medaille_saphir"));
         _medal.x = -800;
         _medal.y = 0;
         _medalSmall = new Image(AssetRegistry.ScoringAtlas.getTexture("saphir_small"));
+        _medalInfo = "saphir_small";
       } else if (_scores.total >= 800 && _scores.total < 1000) {
         _medal = new Image(AssetRegistry.ScoringAtlas.getTexture("medaille_silber"));
         _medal.x = -800;
         _medal.y = 0;
         _medalSmall = new Image(AssetRegistry.ScoringAtlas.getTexture("silver_small"));
+        _medalInfo = "silver_small";
       } else if (_scores.total >= 1000) {
         _medal = new Image(AssetRegistry.ScoringAtlas.getTexture("medaille_gold"));
         _medal.x = -800;
         _medal.y = 0;
         _medalSmall = new Image(AssetRegistry.ScoringAtlas.getTexture("gold_small"));
+        _medalInfo = "gold_small";
       }
 
 
@@ -219,6 +221,12 @@ package Menu
         _medalTween = new GTween(_medal, 1.5, {x: 105}, {ease: Elastic.easeInOut, onComplete: func});
         _tweens.push(_medalTween);
         addChild(_medal);
+      }
+      trace(_medalInfo);
+      if(!_scores.lost) {
+        SaveGame.saveScore(_scores.level, _scores.total, _medalInfo);
+      } else {
+        SaveGame.saveScore(_scores.level, _scores.total, null);
       }
 
     }

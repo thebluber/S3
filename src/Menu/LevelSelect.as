@@ -1,5 +1,6 @@
 package Menu
 {
+  import engine.AssetRegistry;
   import engine.ManagedStage;
   import flash.geom.Point;
   import starling.text.TextField;
@@ -10,7 +11,6 @@ package Menu
   import starling.display.Image;
   import starling.display.Quad;
   import starling.display.Sprite;
-  import engine.AssetRegistry;
   import starling.events.Event;
   import starling.events.Touch;
   import starling.events.TouchEvent;
@@ -61,7 +61,7 @@ package Menu
     {
       
       AssetRegistry.loadLevelSelectGraphics();
-      
+      AssetRegistry.loadScoringGraphics();
       _scrollable = new Sprite();
       _scrollable.addEventListener(TouchEvent.TOUCH, onTouch);
       _levelInfo = new Sprite();
@@ -193,9 +193,9 @@ package Menu
                 _scoreInfo.x = _levelInfo.x + 410;
                 _scoreInfo.y = _levelInfo.y + 220;
                 _levelInfo.addChild(_scoreInfo);
-                trace(SaveGame.levels[level].medal);
+                trace("medal:" + SaveGame.levels[level].medal);	
                 if (SaveGame.levels[level].medal) {
-                  _medalInfo = new Image(AssetRegistry.ScoringAtlas.getTexture(SaveGame.levels[level].medal));
+                  _medalInfo = new Image(AssetRegistry.ScoringAtlas.getTexture(String(SaveGame.levels[level].medal)));
                   _medalInfo.x = _levelInfo.x + 100;
                   _medalInfo.y = _levelInfo.y + 100;
                   _levelInfo.addChild(_medalInfo);
@@ -255,6 +255,7 @@ package Menu
     
     override public function dispose():void {
       AssetRegistry.disposeLevelSelectGraphics();
+	  AssetRegistry.disposeScoringGraphics();
       super.dispose();
     }
   

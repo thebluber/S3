@@ -56,11 +56,11 @@ package Menu.ComboMenuScreens
       infoDisplay.x = (Starling.current.stage.stageWidth - infoDisplay.width) / 2;
       infoDisplay.y = (Starling.current.stage.stageHeight - infoDisplay.height) / 2;
       
-      question.addEventListener(Event.TRIGGERED, function(event:Event) {
+      question.addEventListener(Event.TRIGGERED, function(event:Event):void {
         addChild(infoDisplay);
       });
       
-      infoDisplay.addEventListener(Event.TRIGGERED, function(event:Event) {
+      infoDisplay.addEventListener(Event.TRIGGERED, function(event:Event):void {
         removeChild(infoDisplay);
       });
       
@@ -103,7 +103,7 @@ package Menu.ComboMenuScreens
         desc.y = (Starling.current.stage.stageHeight - desc.height) / 2;
         desc.scaleWhenDown = 1;
         
-        var that = this;
+        var that:MainComboMenu = this;
         var f:Function = function(desc:Button):void
         {
           button.addEventListener(Event.TRIGGERED, function(event:Event):void
@@ -163,7 +163,7 @@ package Menu.ComboMenuScreens
     
     protected function buttonSelector(slot:int):Function
     {
-      var that = this;
+      var that:MainComboMenu = this;
       
       return function(event:Event):void
       {

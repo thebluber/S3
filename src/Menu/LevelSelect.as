@@ -193,11 +193,10 @@ package Menu
                 _scoreInfo.x = _levelInfo.x + 410;
                 _scoreInfo.y = _levelInfo.y + 220;
                 _levelInfo.addChild(_scoreInfo);
-                trace("medal:" + SaveGame.levels[level].medal);	
                 if (SaveGame.levels[level].medal) {
                   _medalInfo = new Image(AssetRegistry.ScoringAtlas.getTexture(String(SaveGame.levels[level].medal)));
-                  _medalInfo.x = _levelInfo.x + 100;
-                  _medalInfo.y = _levelInfo.y + 100;
+                  _medalInfo.x = _levelInfo.x + 560;
+                  _medalInfo.y = _levelInfo.y + 320;
                   _levelInfo.addChild(_medalInfo);
                 }
               }         

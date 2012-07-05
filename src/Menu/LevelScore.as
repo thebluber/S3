@@ -59,7 +59,7 @@ package Menu
     private var _medal:Image;
     private var _medalTween:GTween;
     private var _medalSmall:Image;
-    private var _medalInfo:String = "bronze_small";
+    private var _medalInfo:String;
     
     public function LevelScore(scores:Object = null)
     {

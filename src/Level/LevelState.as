@@ -854,7 +854,7 @@ package Level
         }
         
         updateHud();
-        
+        _hud.updatePreview(_snake);  
         var startTimer:Number, endTimer:Number;
         
         //startTimer = getTimer();

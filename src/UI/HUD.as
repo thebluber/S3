@@ -37,7 +37,14 @@ package UI
     private var _comboText:TextField = new TextField(80, 50, "0", "kroeger 06_65", 45, Color.WHITE);
     private var _speedText:TextField = new TextField(80, 50, "0", "kroeger 06_65", 45, Color.WHITE);
     private var _poisonText:TextField = new TextField(80, 50, "0", "kroeger 06_65", 45, Color.WHITE);
+    
+    private var _previewBoxes:Array = [new Image(AssetRegistry.SnakeAtlas.getTexture("UIBoxFuerPreview")),
+                                      new Image(AssetRegistry.SnakeAtlas.getTexture("UIBoxFuerPreview")),
+                                      new Image(AssetRegistry.SnakeAtlas.getTexture("UIBoxFuerPreview")),
+                                      new Image(AssetRegistry.SnakeAtlas.getTexture("UIBoxFuerPreview")),
+                                      new Image(AssetRegistry.SnakeAtlas.getTexture("UIBoxFuerPreview"))];
  
+    private var _previewTypes:Array = [];
     private var _icons:Object = {lifes: [_lifes, _lifesText, {x: 12, y: 12}],
                           combo: [_combo, _comboText, {x: 12, y: 70}],
                           eggs: [_neededEggs, _neededEggsText, {x: 12, y: 70}],
@@ -78,11 +85,62 @@ package UI
         }
       }
 
+      var xPos:int = 780;//960 - 36 * 5
+      var yPos:int = 10;
+      for (var k:int; k < _previewBoxes.length; k++){
+        _previewBoxes[k].x = xPos;
+        _previewBoxes[k].y = yPos;
+        _previewBoxes[k].visible = false;
+        xPos += _previewBoxes[k].width;
+        addChild(_previewBoxes[k]);
+      }
+      flatten();
       addChild(_scoreText);
       addChild(_radar);      
           
     }
     
+    public function updatePreviewBox():void {
+      for (var i:int = 0; i < _previewTypes.length; i++){
+        _previewBoxes[i].texture = AssetRegistry.SnakeAtlas.getTexture(_previewTypes[i]);
+        _previewBoxes[i].visible;  
+      }
+    
+    }
+    private function toPreviewType(eggType:int):String {
+      var type:String;
+      switch (eggType){
+        case 0:
+          type = "UIBoxFuerPreview";
+        break;
+        case 1:
+          type = "PreviewIconEiA";
+        break;
+        case 2:
+          type = "PreviewIconEiB";
+        break;
+        case 3:
+          type = "PreviewIconEiC";
+        break;
+        case 4:
+          type = "UIBoxFuerPreview";
+        break;
+      } 
+      return type;
+    }
+    public function updatePreview(snake:Snake):void {
+      if (snake.body.length > 4 && snake.body.length < 10){
+        _previewTypes.push(toPreviewType(snake.body[snake.body.length - 1].type));
+      } else {
+        for (var i:int = snake.body.length - 5; i < snake.body.length; i++) {
+          if (snake.body[i]){
+            _previewBoxes[i].texture = toPreviewType(snake.body[i].type);
+          }
+        }
+      }
+      updatePreviewBox();
+    }
+
     public function get radar():Radar {
       return _radar;
     }

@@ -516,6 +516,7 @@ package Level
         if (egg.type <= AssetRegistry.EGGROTTEN)
         {
           _snake.eat(egg.type);
+		  _hud.updatePreview(_snake); 
         }
         
         var particle:PDParticleSystem = _particles[egg.type];
@@ -654,8 +655,9 @@ package Level
             showParticles(egg, soundCounter);
             _snake.removeChild(egg);
             _snake.body.splice(_snake.body.indexOf(egg), 1);
-            soundCounter++;
-            setTimeout(func, (300 / (expoCounter * expoCounter)) + 80);
+			soundCounter++;
+            _hud.updatePreview(_snake); 
+			setTimeout(func, (300 / (expoCounter * expoCounter)) + 80);
           }
         }
       }
@@ -853,8 +855,7 @@ package Level
           spawnRandomEgg();
         }
         
-        updateHud();
-        _hud.updatePreview(_snake);  
+        updateHud(); 
         var startTimer:Number, endTimer:Number;
         
         //startTimer = getTimer();

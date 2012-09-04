@@ -51,7 +51,7 @@ package Menu.ComboMenuScreens
       
       addChild(greybox); 
 	  
-	    _normalComboHeading = new TextField(greybox.width, 60, AssetRegistry.Strings.NORMALCOMBO, "kroeger 06_65", 60, Color.WHITE);
+	    _normalComboHeading = new TextField(greybox.width, 60, AssetRegistry.Strings.NORMALCOMBO, SaveGame.font, 60, Color.WHITE);
       _normalComboHeading.x = (Starling.current.stage.stageWidth - _normalComboHeading.width) / 2;
       _normalComboHeading.y = 10;
       addChild(_normalComboHeading);
@@ -92,7 +92,7 @@ package Menu.ComboMenuScreens
       _scrollable.addChild(speed);
       
       
-      var speedText:TextField = new TextField(greybox.width - 120 - speed.width, speed.height * 1.5, AssetRegistry.Strings.SPEEDDESC, "kroeger 06_65", 30, Color.WHITE);
+      var speedText:TextField = new TextField(greybox.width - 120 - speed.width, speed.height * 1.5, AssetRegistry.Strings.SPEEDDESC, SaveGame.font, 30, Color.WHITE);
       speedText.hAlign = HAlign.LEFT;
       speedText.vAlign = VAlign.TOP;
       speedText.x = speed.x + speed.width + 40;
@@ -103,10 +103,10 @@ package Menu.ComboMenuScreens
       var secondComboText:TextField;
       if (SaveGame.endless){
         secondCombo = new Image(AssetRegistry.MenuAtlasOpaque.getTexture("combo-time"));
-        secondComboText = new TextField(speedText.width, speedText.height, AssetRegistry.Strings.TIMEDESC, "kroeger 06_65", 30, Color.WHITE);
+        secondComboText = new TextField(speedText.width, speedText.height, AssetRegistry.Strings.TIMEDESC, SaveGame.font, 30, Color.WHITE);
       } else {
         secondCombo = new Image(AssetRegistry.MenuAtlasOpaque.getTexture("combo-slower"));
-        secondComboText = new TextField(speedText.width, speedText.height, AssetRegistry.Strings.SLOWERDESC, "kroeger 06_65", 30, Color.WHITE);
+        secondComboText = new TextField(speedText.width, speedText.height, AssetRegistry.Strings.SLOWERDESC, SaveGame.font, 30, Color.WHITE);
       }
       secondCombo.x = speed.x;
       secondCombo.y = speedText.y + speedText.height + 20;
@@ -127,7 +127,7 @@ package Menu.ComboMenuScreens
      
       _scrollable.addChild(norotten);      
       
-      var norottenText:TextField = new TextField(speedText.width, speedText.height, AssetRegistry.Strings.NOROTTENDESC, "kroeger 06_65", 30, Color.WHITE);
+      var norottenText:TextField = new TextField(speedText.width, speedText.height, AssetRegistry.Strings.NOROTTENDESC, SaveGame.font, 30, Color.WHITE);
       norottenText.hAlign = HAlign.LEFT;
       norottenText.vAlign = VAlign.TOP;
       norottenText.x = speedText.x;

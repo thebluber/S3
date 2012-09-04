@@ -134,7 +134,7 @@ package Menu
     
     override protected function initialize():void
     {
-      _highScoreTxt = new TextField(AssetRegistry.STAGE_WIDTH, AssetRegistry.STAGE_HEIGHT, "", "kroeger 06_65", 90, 0x00ff06);
+      _highScoreTxt = new TextField(AssetRegistry.STAGE_WIDTH, AssetRegistry.STAGE_HEIGHT, "", SaveGame.font, 90, 0x00ff06);
       _highScoreTxt.x = 0;
       _highScoreTxt.y = 0;
       _tweens = new Vector.<GTween>;
@@ -273,22 +273,22 @@ package Menu
     private function addTexts():void
     {
       
-      _lifeBonusText = new TextField(100, 35, "1", "kroeger 06_65", 35, Color.WHITE);
+      _lifeBonusText = new TextField(100, 35, "1", SaveGame.font, 35, Color.WHITE);
       _lifeBonusText.hAlign = HAlign.RIGHT;
       _lifeBonusText.x = _lifeBonusHeading.x + _lifeBonusHeading.width + 10;
       _lifeBonusText.y = _lifeBonusHeading.y;
       
-      _scoreText = new TextField(100, 35, "1", "kroeger 06_65", 35, Color.WHITE);
+      _scoreText = new TextField(100, 35, "1", SaveGame.font, 35, Color.WHITE);
       _scoreText.hAlign = HAlign.RIGHT;
       _scoreText.x = _lifeBonusText.x;
       _scoreText.y = _scoreHeading.y;
       
-      _timeBonusText = new TextField(100, 35, "1", "kroeger 06_65", 35, Color.WHITE);
+      _timeBonusText = new TextField(100, 35, "1", SaveGame.font, 35, Color.WHITE);
       _timeBonusText.hAlign = HAlign.RIGHT;
       _timeBonusText.x = _lifeBonusText.x;
       _timeBonusText.y = _timeBonusHeading.y;
       
-      _totalText = new TextField(100, 35, "1", "kroeger 06_65", 35, Color.WHITE);
+      _totalText = new TextField(100, 35, "1", SaveGame.font, 35, Color.WHITE);
       _totalText.hAlign = HAlign.RIGHT;
       _totalText.x = _lifeBonusText.x;
       _totalText.y = _totalHeading.y;
@@ -315,21 +315,21 @@ package Menu
       _scoreboard.y = 30;
       addChild(_scoreboard);
       
-      _scoreboardText = new TextField(200, 40, AssetRegistry.Strings.SCORES, "kroeger 06_65", 40, Color.WHITE);
+      _scoreboardText = new TextField(200, 40, AssetRegistry.Strings.SCORES, SaveGame.font, 40, Color.WHITE);
       _scoreboardText.vAlign = VAlign.TOP;
       _scoreboardText.hAlign = HAlign.LEFT;
       _scoreboardText.x = _scoreboard.x + 20;
       _scoreboardText.y = _scoreboard.y + 20;
       addChild(_scoreboardText);
       
-      _scoreHeading = new TextField(200, 40, "Score", "kroeger 06_65", 35, Color.WHITE);
+      _scoreHeading = new TextField(200, 40, "Score", SaveGame.font, 35, Color.WHITE);
       _scoreHeading.x = _scoreboard.x + 20;
       _scoreHeading.y = _scoreboard.y + 80;
       _scoreHeading.vAlign = VAlign.TOP;
       _scoreHeading.hAlign = HAlign.LEFT;
       addChild(_scoreHeading);
       
-      _timeBonusHeading = new TextField(200, 40, "Time Bonus", "kroeger 06_65", 35, Color.WHITE);
+      _timeBonusHeading = new TextField(200, 40, "Time Bonus", SaveGame.font, 35, Color.WHITE);
       _timeBonusHeading.x = _scoreHeading.x;
       _timeBonusHeading.y = _scoreHeading.y + 60;
       _timeBonusHeading.vAlign = VAlign.TOP;
@@ -339,7 +339,7 @@ package Menu
         addChild(_timeBonusHeading);
       }
       
-      _lifeBonusHeading = new TextField(200, 40, "Life Bonus", "kroeger 06_65", 35, Color.WHITE);
+      _lifeBonusHeading = new TextField(200, 40, "Life Bonus", SaveGame.font, 35, Color.WHITE);
       _lifeBonusHeading.x = _scoreHeading.x;
       _lifeBonusHeading.y = (_scores.level != 9) ? _timeBonusHeading.y + 60 : _scoreHeading.y + 60;
       _lifeBonusHeading.vAlign = VAlign.TOP;
@@ -349,7 +349,7 @@ package Menu
         addChild(_lifeBonusHeading);
       }
       
-      _totalHeading = new TextField(200, 40, "Total", "kroeger 06_65", 35, Color.WHITE);
+      _totalHeading = new TextField(200, 40, "Total", SaveGame.font, 35, Color.WHITE);
       _totalHeading.x = _scoreHeading.x;
       _totalHeading.y = _lifeBonusHeading.y + 80;
       _totalHeading.vAlign = VAlign.TOP;
@@ -360,19 +360,19 @@ package Menu
     
     private function addRank():void
     {
-      _rankHeading = new TextField(200, 40, AssetRegistry.Strings.RANK, "kroeger 06_65", 40, Color.WHITE);
+      _rankHeading = new TextField(200, 40, AssetRegistry.Strings.RANK, SaveGame.font, 40, Color.WHITE);
       _rankHeading.x = 500;
       _rankHeading.y = _scoreboardText.y;
       _rankHeading.hAlign = HAlign.LEFT;
       addChild(_rankHeading);
       
-      _rankText = new TextField(300, 400, "Checking rank...", "kroeger 06_65", 35, Color.WHITE);
+      _rankText = new TextField(300, 400, "Checking rank...", SaveGame.font, 35, Color.WHITE);
       _rankText.x = _rankHeading.x;
       _rankText.y = _scoreHeading.y;
       _rankText.vAlign = VAlign.TOP;
       _rankText.hAlign = HAlign.LEFT;
       addChild(_rankText);
-      _rank = new TextField(200, 400, "", "kroeger 06_65", 35, Color.WHITE);
+      _rank = new TextField(200, 400, "", SaveGame.font, 35, Color.WHITE);
       _rank.x = _rankText.x + 70;
       _rank.y = _scoreHeading.y;
       _rank.vAlign = VAlign.TOP;

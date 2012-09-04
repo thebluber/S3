@@ -27,6 +27,7 @@ package engine
       {
         initializeData();
       }
+	  _sharedObject.data.font = "edukai-3";//"wqy-zenhei";//"edukai-3";
     }
     
     public static function get savedScores():Array {
@@ -312,7 +313,10 @@ package engine
       }
       return n;
     }
-    
+    public static function get font():String 
+    {
+      return _sharedObject.data.font;
+    }
     public static function get userName():String
     {
       if (!_sharedObject.data.user || _sharedObject.data.user == "") {

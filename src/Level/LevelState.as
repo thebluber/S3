@@ -1144,9 +1144,9 @@ package Level
       
       var _scrollable:Sprite = new Sprite();
       
-      var levelName:TextField = new TextField(600, 60, SaveGame.levelName, "kroeger 06_65", 60, Color.WHITE);
+      var levelName:TextField = new TextField(600, 60, SaveGame.levelName, "edukai-3", 60, Color.WHITE);
       
-      var heading:TextField = new TextField(600, 60, AssetRegistry.Strings.OBJECTIVE, "kroeger 06_65", 60, Color.WHITE);
+      var heading:TextField = new TextField(600, 60, AssetRegistry.Strings.OBJECTIVE, "edukai-3", 60, Color.WHITE);
       
       var box:Quad = new Quad(800, 535, 0);
       box.alpha = 0x44 / 0xff;
@@ -1171,7 +1171,7 @@ package Level
       {
         //var objectiveText:TextField = new TextField(140, 60, goals[i][0], "kroeger 06_65", 60, Color.WHITE);
         var img:Image = goals[i][0];
-        var txt:TextField = new TextField(200, 60, goals[i][1], "kroeger 06_65", 60, Color.WHITE);
+        var txt:TextField = new TextField(200, 60, goals[i][1], "edukai-3", 60, Color.WHITE);
         txt.hAlign = HAlign.LEFT;
         img.x = xPos + 70;
         img.y = yPos;
@@ -1197,7 +1197,7 @@ package Level
       
       addChild(_scroller);
       
-      var text:TextField = new TextField(700, 1050, "", "kroeger 06_65", fontSize, Color.WHITE);
+      var text:TextField = new TextField(700, 1050, "", "edukai-3", fontSize, Color.WHITE);
       text.text = desc;
       text.autoScale = true;
       text.x = (box.width - text.width) / 2;
@@ -1309,7 +1309,7 @@ package Level
       _textLayer = new Sprite;
       for (var i:int = 0; i < 15; i++)
       {
-        var temp:TextField = new TextField(100, 100, "", "kroeger 06_65");
+        var temp:TextField = new TextField(100, 100, "", "edukai-3");
         temp.visible = false;
         _textLayer.addChild(temp);
         _textFieldPool.push(temp);

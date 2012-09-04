@@ -187,7 +187,7 @@ package Menu
       _leaderboard.y = 30;
       addChild(_leaderboard);
       
-      _leaderboardText = new TextField(300, 40, AssetRegistry.Strings.LEADERBOARDS, "kroeger 06_65", 40, Color.WHITE);
+      _leaderboardText = new TextField(300, 40, AssetRegistry.Strings.LEADERBOARDS, SaveGame.font, 40, Color.WHITE);
       _leaderboardText.vAlign = VAlign.TOP;
       //_leaderboardText.hAlign = HAlign.LEFT;
       _leaderboardText.x = _leaderboard.x + (_leaderboard.width - _leaderboardText.width) / 2;
@@ -220,28 +220,28 @@ package Menu
     
     private function createLeaderboardText():void 
     {
-        _countText = new TextField(_leaderboard.width, _leaderboard.height - (_leaderboardText.height + 40), "", "kroeger 06_65", 32, Color.WHITE);
+        _countText = new TextField(_leaderboard.width, _leaderboard.height - (_leaderboardText.height + 40), "", SaveGame.font, 32, Color.WHITE);
         _countText.hAlign = HAlign.LEFT;
         _countText.vAlign = VAlign.TOP;
         _countText.x = _leaderboard.x + 20;
         _countText.y = _leaderboardText.y + _leaderboardText.height + 60;
         addChild(_countText);
         
-        _nameText = new TextField(_leaderboard.width, _leaderboard.height - (_leaderboardText.height + 40), "", "kroeger 06_65", 32, Color.WHITE);
+        _nameText = new TextField(_leaderboard.width, _leaderboard.height - (_leaderboardText.height + 40), "", SaveGame.font, 32, Color.WHITE);
         _nameText.hAlign = HAlign.LEFT;
         _nameText.vAlign = VAlign.TOP;
         _nameText.x = _leaderboard.x + 70;
         _nameText.y = _countText.y;
         addChild(_nameText);
         
-        _scoreText = new TextField(_leaderboard.width, _leaderboard.height - (_leaderboardText.height + 40), "", "kroeger 06_65", 32, Color.WHITE);
+        _scoreText = new TextField(_leaderboard.width, _leaderboard.height - (_leaderboardText.height + 40), "", SaveGame.font, 32, Color.WHITE);
         _scoreText.hAlign = HAlign.LEFT;
         _scoreText.vAlign = VAlign.TOP;
         _scoreText.x = _leaderboard.x + 250;
         _scoreText.y = _countText.y;
         addChild(_scoreText);
         
-        _timeText = new TextField(_leaderboard.width, _leaderboard.height - (_leaderboardText.height + 40), "", "kroeger 06_65", 32, Color.WHITE);
+        _timeText = new TextField(_leaderboard.width, _leaderboard.height - (_leaderboardText.height + 40), "", SaveGame.font, 32, Color.WHITE);
         _timeText.hAlign = HAlign.LEFT;
         _timeText.vAlign = VAlign.TOP;
         _timeText.x = _leaderboard.x + 560;

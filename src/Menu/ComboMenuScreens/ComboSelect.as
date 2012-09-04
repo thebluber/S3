@@ -50,7 +50,7 @@ package Menu.ComboMenuScreens
       
       addChild(greybox); 
 	  
-	  _selComboHeading = new TextField(greybox.width, 60, AssetRegistry.Strings.SELECTABLECOMBO, "kroeger 06_65", 60, Color.WHITE);
+	  _selComboHeading = new TextField(greybox.width, 60, AssetRegistry.Strings.SELECTABLECOMBO, SaveGame.font, 60, Color.WHITE);
       _selComboHeading.x = (Starling.current.stage.stageWidth - _selComboHeading.width) / 2;
       _selComboHeading.y = 10;
       addChild(_selComboHeading);
@@ -99,7 +99,7 @@ package Menu.ComboMenuScreens
       _scrollable.addChild(time);
       
       
-      var timeText:TextField = new TextField(greybox.width - 120 - time.width, time.height * 1.5, AssetRegistry.Strings.TIMECOMBODESC, "kroeger 06_65", 30, Color.WHITE);
+      var timeText:TextField = new TextField(greybox.width - 120 - time.width, time.height * 1.5, AssetRegistry.Strings.TIMECOMBODESC, SaveGame.font, 30, Color.WHITE);
       timeText.hAlign = HAlign.LEFT;
       timeText.vAlign = VAlign.TOP;
       timeText.x = time.x + time.width + 40;
@@ -115,7 +115,7 @@ package Menu.ComboMenuScreens
       });      
       _scrollable.addChild(chaintime);
       
-      var chaintimeText:TextField = new TextField(timeText.width, timeText.height, AssetRegistry.Strings.CHAINTIMEDESC, "kroeger 06_65", 30, Color.WHITE);
+      var chaintimeText:TextField = new TextField(timeText.width, timeText.height, AssetRegistry.Strings.CHAINTIMEDESC, SaveGame.font, 30, Color.WHITE);
       chaintimeText.hAlign = HAlign.LEFT;
       chaintimeText.vAlign = VAlign.TOP;
       chaintimeText.x = timeText.x;
@@ -131,7 +131,7 @@ package Menu.ComboMenuScreens
       });      
       _scrollable.addChild(xtraspawn);      
       
-      var xtraspawnText:TextField = new TextField(timeText.width, timeText.height, AssetRegistry.Strings.XTRASPAWNDESC, "kroeger 06_65", 30, Color.WHITE);
+      var xtraspawnText:TextField = new TextField(timeText.width, timeText.height, AssetRegistry.Strings.XTRASPAWNDESC, SaveGame.font, 30, Color.WHITE);
       xtraspawnText.hAlign = HAlign.LEFT;
       xtraspawnText.vAlign = VAlign.TOP;
       xtraspawnText.x = timeText.x;
@@ -147,7 +147,7 @@ package Menu.ComboMenuScreens
       });
       _scrollable.addChild(shuffle);
       
-      var shuffleText:TextField = new TextField(timeText.width, timeText.height + 20, AssetRegistry.Strings.SHUFFLEDESC, "kroeger 06_65", 30, Color.WHITE);
+      var shuffleText:TextField = new TextField(timeText.width, timeText.height + 20, AssetRegistry.Strings.SHUFFLEDESC, SaveGame.font, 30, Color.WHITE);
       shuffleText.hAlign = HAlign.LEFT;
       shuffleText.vAlign = VAlign.TOP;
       shuffleText.x = timeText.x;
@@ -163,7 +163,7 @@ package Menu.ComboMenuScreens
       });
       _scrollable.addChild(gold);
       
-       var goldText:TextField = new TextField(timeText.width, timeText.height, AssetRegistry.Strings.GOLDDESC, "kroeger 06_65", 30, Color.WHITE);
+       var goldText:TextField = new TextField(timeText.width, timeText.height, AssetRegistry.Strings.GOLDDESC, SaveGame.font, 30, Color.WHITE);
       goldText.hAlign = HAlign.LEFT;
       goldText.vAlign = VAlign.TOP;
       goldText.x = timeText.x;
@@ -179,7 +179,7 @@ package Menu.ComboMenuScreens
       });
       _scrollable.addChild(xtralife);
       
-       var xtralifeText:TextField = new TextField(timeText.width, timeText.height, AssetRegistry.Strings.XTRALIFEDESC, "kroeger 06_65", 30, Color.WHITE);
+       var xtralifeText:TextField = new TextField(timeText.width, timeText.height, AssetRegistry.Strings.XTRALIFEDESC, SaveGame.font, 30, Color.WHITE);
       xtralifeText.hAlign = HAlign.LEFT;
       xtralifeText.vAlign = VAlign.TOP;
       xtralifeText.x = timeText.x;

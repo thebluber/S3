@@ -64,7 +64,7 @@ package Menu.PauseMenuScreens
         }
       }
 
-      _pauseHeading = new TextField(_greyBox.width, 80, AssetRegistry.Strings.PAUSE, "kroeger 06_65", 60, Color.WHITE);
+      _pauseHeading = new TextField(_greyBox.width, 80, AssetRegistry.Strings.PAUSE, SaveGame.font, 60, Color.WHITE);
       _pauseHeading.x = (Starling.current.stage.stageWidth - _pauseHeading.width) / 2;
       _pauseHeading.y = 100;
       addChild(_pauseHeading);
@@ -138,7 +138,7 @@ package Menu.PauseMenuScreens
 		
     private function addToggles():void
     {
-      _musicHeading = new TextField(_greyBox.width / 2, 50, AssetRegistry.Strings.MUSIC, "kroeger 06_65", 40, Color.WHITE);
+      _musicHeading = new TextField(_greyBox.width / 2, 50, AssetRegistry.Strings.MUSIC, SaveGame.font, 40, Color.WHITE);
       _musicHeading.x = _restartButton.x + ((_restartButton.width - _musicHeading.width) / 2);
       _musicHeading.y = _restartButton.y + 100;
       _musicToggle = new ToggleSwitch();
@@ -155,7 +155,7 @@ package Menu.PauseMenuScreens
           AssetRegistry.soundmanager.musicMuted = !tswitch.isSelected;
           SaveGame.musicMuted = AssetRegistry.soundmanager.musicMuted;
         });
-      _sfxHeading = new TextField(_greyBox.width / 2, 50, AssetRegistry.Strings.SFX, "kroeger 06_65", 40, Color.WHITE);
+      _sfxHeading = new TextField(_greyBox.width / 2, 50, AssetRegistry.Strings.SFX, SaveGame.font, 40, Color.WHITE);
       _sfxHeading.x = _backButton.x + ((_backButton.width - _sfxHeading.width) / 2);
       _sfxHeading.y = _backButton.y + 100;
       
@@ -182,7 +182,7 @@ package Menu.PauseMenuScreens
     private function addControlSwitches():void
     {
       
-      _controlsHeading = new TextField(_greyBox.width / 2, 50, AssetRegistry.Strings.CONTROLTYPE, "kroeger 06_65", 40, Color.WHITE);
+      _controlsHeading = new TextField(_greyBox.width / 2, 50, AssetRegistry.Strings.CONTROLTYPE, SaveGame.font, 40, Color.WHITE);
       _controlsHeading.x = _greyBox.x + (_greyBox.width - _controlsHeading.width) / 2;
       _controlsHeading.y = _sfxToggle.y + 100;
       addChild(_controlsHeading);

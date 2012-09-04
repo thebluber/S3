@@ -202,7 +202,7 @@ package Menu
       
       extras.addChild(_greyBox);
       
-      var _extrasHeading:TextField = new TextField(_greyBox.width, 50, AssetRegistry.Strings.EXTRAS, "kroeger 06_65", 50, Color.WHITE);
+      var _extrasHeading:TextField = new TextField(_greyBox.width, 50, AssetRegistry.Strings.EXTRAS, SaveGame.font, 50, Color.WHITE);
       _extrasHeading.x = (Starling.current.stage.stageWidth - _extrasHeading.width) / 2;
       _extrasHeading.y = _greyBox.y + 10;
       extras.addChild(_extrasHeading);

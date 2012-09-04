@@ -108,7 +108,13 @@ package engine
     private static const ArcadeBackgroundPNG:Class;
     [Embed(source="../../assets/Font/8bit.fnt",mimeType="application/octet-stream")]
     static private const FontXML:Class;
-    [Embed(source="../../assets/Font/8bit_0.png")]
+	
+	[Embed(source="../../assets/Font/edukai-3.ttf",embedAsCFF="false", fontFamily="edukai-3")]
+    static private const Edukai:Class;
+    [Embed(source="../../assets/Font/wqy-zenhei.ttc",embedAsCFF="false", fontFamily="wqy-zenhei")]
+    static private const WQY:Class;
+	
+	[Embed(source="../../assets/Font/8bit_0.png")]
     static private const FontPNG:Class;
     [Embed(source="../../assets/Loading/loading.png")]
     static public const LoadingPNG:Class;
@@ -370,7 +376,7 @@ package engine
       mogade = new Mogade(MOGADE_GAME_ID, MOGADE_SECRET);
       
 	    if (SaveGame.language == 2){
-	      Strings = Deutsch;
+	      Strings = Chinese;
       } else {
         Strings = English;
       }

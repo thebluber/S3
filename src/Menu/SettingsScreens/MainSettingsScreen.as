@@ -64,7 +64,7 @@ package Menu.SettingsScreens
       
       addChild(_greyBox);
       
-      _heading = new TextField(_greyBox.width, 50, AssetRegistry.Strings.MAINSETTINGS, "kroeger 06_65", 50, Color.WHITE);
+      _heading = new TextField(_greyBox.width, 50, AssetRegistry.Strings.MAINSETTINGS, SaveGame.font, 50, Color.WHITE);
       
       _heading.x = _greyBox.x + (_greyBox.width - _heading.width) / 2;
       _heading.y = _greyBox.y;
@@ -104,7 +104,7 @@ package Menu.SettingsScreens
     
     private function addUserName():void
     {
-      _nameHeading = new TextField(_greyBox.width, 50, "User Name: " + SaveGame.userName, "kroeger 06_65", 40, Color.WHITE);
+      _nameHeading = new TextField(_greyBox.width, 50, "User Name: " + SaveGame.userName, SaveGame.font, 40, Color.WHITE);
       _nameHeading.x = (_greyBox.width - _nameHeading.width) / 2;
       _nameHeading.y = _langHeading.y + _langHeading.height + 50;
       _nameHeading.hAlign = HAlign.CENTER;
@@ -132,7 +132,7 @@ package Menu.SettingsScreens
     private function addControlSwitches():void
     {
       
-      _controlsHeading = new TextField(_greyBox.width / 2, 50, AssetRegistry.Strings.CONTROLTYPE, "kroeger 06_65", 40, Color.WHITE);
+      _controlsHeading = new TextField(_greyBox.width / 2, 50, AssetRegistry.Strings.CONTROLTYPE, SaveGame.font, 40, Color.WHITE);
       _controlsHeading.x = (_greyBox.width - _controlsHeading.width) / 2;
       _controlsHeading.y = 0;
       _scrollable.addChild(_controlsHeading);
@@ -169,7 +169,7 @@ package Menu.SettingsScreens
     private function addDifficultySwitches():void
     {
       
-      _diffHeading = new TextField(_greyBox.width / 2, 50, AssetRegistry.Strings.DIFFICULTY, "kroeger 06_65", 40, Color.WHITE);
+      _diffHeading = new TextField(_greyBox.width / 2, 50, AssetRegistry.Strings.DIFFICULTY, SaveGame.font, 40, Color.WHITE);
       _diffHeading.x = (_greyBox.width - _diffHeading.width) / 2;
       _diffHeading.y = _controlsHeading.y + _controlsHeading.height + 80;
       _scrollable.addChild(_diffHeading);
@@ -206,7 +206,7 @@ package Menu.SettingsScreens
     private function addLanguageSwitches():void
     {
       
-      _langHeading = new TextField(_greyBox.width / 2, 50, AssetRegistry.Strings.LANGUAGE, "kroeger 06_65", 40, Color.WHITE);
+      _langHeading = new TextField(_greyBox.width / 2, 50, AssetRegistry.Strings.LANGUAGE, SaveGame.font, 40, Color.WHITE);
       _langHeading.x = (_greyBox.width - _langHeading.width) / 2;
       _langHeading.y = _diffHeading.y + _diffHeading.height + 80;
       _scrollable.addChild(_langHeading);

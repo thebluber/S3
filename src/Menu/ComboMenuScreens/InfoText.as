@@ -51,12 +51,12 @@ package Menu.ComboMenuScreens
       
       addChild(greybox); 
 	  
-	    _infoHeading = new TextField(greybox.width, 60, AssetRegistry.Strings.ARCADEINFOHEADING, "kroeger 06_65", 60, Color.WHITE);
+	    _infoHeading = new TextField(greybox.width, 60, AssetRegistry.Strings.ARCADEINFOHEADING, SaveGame.font, 60, Color.WHITE);
       _infoHeading.x = (Starling.current.stage.stageWidth - _infoHeading.width) / 2;
       _infoHeading.y = 10;
       addChild(_infoHeading);
       
-      _text = new TextField(greybox.width - 40, greybox.height + 340, AssetRegistry.Strings.ARCADEINFO, "kroeger 06_65", 40, Color.WHITE);
+      _text = new TextField(greybox.width - 40, greybox.height + 340, AssetRegistry.Strings.ARCADEINFO,SaveGame.font, 40, Color.WHITE);
 			_text.x = 20;
       
 	  

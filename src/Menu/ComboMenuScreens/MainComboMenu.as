@@ -75,7 +75,7 @@ package Menu.ComboMenuScreens
       infoDisplay.y = 40 + 30;
       infoDisplay.alpha = 0.8;
       
-			_text = new TextField(_greybox.width - 40, infoDisplay.height + 340, "", "kroeger 06_65", 40, Color.WHITE);
+			_text = new TextField(_greybox.width - 40, infoDisplay.height + 340, "", SaveGame.font, 40, Color.WHITE);
 			_text.x = 20;
 			//_text.hAlign = HAlign.LEFT;
       
@@ -91,7 +91,7 @@ package Menu.ComboMenuScreens
       
       addChild(_greybox);
       
-      _arcadeModiHeading = new TextField(_greybox.width, 60, AssetRegistry.Strings.ARCADEHEADING, "kroeger 06_65", 60, Color.WHITE);
+      _arcadeModiHeading = new TextField(_greybox.width, 60, AssetRegistry.Strings.ARCADEHEADING, SaveGame.font, 60, Color.WHITE);
       _arcadeModiHeading.x = (Starling.current.stage.stageWidth - _arcadeModiHeading.width) / 2;
       _arcadeModiHeading.y = 10;
       addChild(_arcadeModiHeading);

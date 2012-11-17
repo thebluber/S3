@@ -57,13 +57,23 @@ package UI
     private var _pointsQueueRunning:Boolean = false;   
     
     private var _scoreDisplay:int = 0;
+
     
     public function HUD(levelState:LevelState)
     {
       _levelState = levelState;
       _iconLayer = new Sprite();
       _iconLayer.touchable = false;
+	  
+	  _center = new Point(Starling.current.nativeStage.fullScreenWidth / 2, Starling.current.nativeStage.fullScreenHeight / 2);
       
+	  if (AssetRegistry.STAGE_WIDTH > Starling.current.nativeStage.fullScreenWidth) {
+		
+			  
+		  _center.x = AssetRegistry.STAGE_WIDTH / 2;
+		  _center.y = AssetRegistry.STAGE_HEIGHT / 2;
+	  }
+		  
       // TextFields always force a new draw call, so add them last!
       _textLayer = new Sprite();
       _textLayer.touchable = false;
@@ -84,7 +94,7 @@ package UI
       _pointsQueueRunning = false;
       
       // A center point so we don't need to recalculate
-      _center = new Point(Starling.current.nativeStage.fullScreenWidth / 2, Starling.current.nativeStage.fullScreenHeight / 2);
+      //_center = new Point(Starling.current.nativeStage.fullScreenWidth / 2, Starling.current.nativeStage.fullScreenHeight / 2);
       
       createTop();
       createControls();
@@ -164,8 +174,8 @@ package UI
         
     private function createRadarCircle():void {
       _radarCircle = new Image(AssetRegistry.UIAtlas.getTexture("KreisRadar"));
-      _radarCircle.x = (Starling.current.nativeStage.fullScreenWidth - _radarCircle.width) / 2;
-      _radarCircle.y = (Starling.current.nativeStage.fullScreenHeight - _radarCircle.height) / 2;
+      _radarCircle.x = (_center.x * 2 - _radarCircle.width) / 2;
+      _radarCircle.y = (_center.y * 2 - _radarCircle.height) / 2;
       _radarCircle.touchable = false;
     }
     
@@ -177,7 +187,7 @@ package UI
       var i:int;
       var tailViewBox:Image;
       
-      var baseX:int = Starling.current.nativeStage.fullScreenWidth - 210;
+      var baseX:int = _center.x * 2 - 210;
       var baseY:int = 10;
       
       _tailView = new Sprite();
@@ -221,8 +231,8 @@ package UI
           txt.visible = true;
           txt.scaleX = txt.scaleY = 1;
           txt.pivotX = txt.pivotY = 0;
-          txt.height = Starling.current.nativeStage.fullScreenHeight;
-          txt.width =  Starling.current.nativeStage.fullScreenWidth;
+          txt.height = _center.y * 2;
+          txt.width =  _center.x * 2;
           txt.hAlign = HAlign.CENTER;
           trace("Recycling old message");
           return _textMessagesPool[i];
@@ -285,7 +295,7 @@ package UI
         textMessage.y = 640;      
         //tween.animate("x", 280);
         //tween.animate("y", -(Math.sqrt(80000)/2));
-        tween.animate("x", (Starling.current.nativeStage.fullScreenWidth - textMessage.width / textMessage.scaleX) / 2);
+        tween.animate("x", (_center.x * 2 - textMessage.width / textMessage.scaleX) / 2);
         tween.animate("y", -40);
         //tween.animate("rotation", - 30 * (Math.PI / 180));        
       } else {
@@ -294,7 +304,7 @@ package UI
         textMessage.y = 640;
         //tween.animate("x", 480);
         //tween.animate("y", -(Math.sqrt(80000)*2.5));
-        tween.animate("x", (Starling.current.nativeStage.fullScreenWidth - textMessage.width / textMessage.scaleX) / 2);
+        tween.animate("x", (_center.x * 2 - textMessage.width / textMessage.scaleX) / 2);
         tween.animate("y", -40);
         /*tween.onUpdate = function():void {
           textMessage.pivotX = textMessage.width;
@@ -421,7 +431,7 @@ package UI
       var iconCfg:Object;
             
       // Create the score display.
-      _score = new TextField(Starling.current.nativeStage.fullScreenWidth, 100, "0", "kroeger 06_65", 80, Color.WHITE);
+      _score = new TextField(_center.x * 2, 100, "0", "kroeger 06_65", 80, Color.WHITE);
       _score.touchable = false;
       _textLayer.addChild(_score);
       
@@ -509,7 +519,7 @@ package UI
     private function createTop():void {
       _topl = new Image(Texture.fromBitmap(new UILeft));
 	  _topr = new Image(Texture.fromBitmap(new UIRight));
-	  _topr.x = Starling.current.nativeStage.fullScreenWidth - _topr.width;
+	  _topr.x = _center.x * 2 - _topr.width;
       _topr.addEventListener(TouchEvent.TOUCH, function(evt:TouchEvent):void {
           if (evt.getTouch(_topr, TouchPhase.ENDED)) {
             _levelState.togglePause();
@@ -559,20 +569,20 @@ package UI
     
     private function createType1Buttons():void {
       var buttonConfig:Object = {
-        left180: { x: 0, y: Starling.current.nativeStage.fullScreenHeight - (640 - 190), texture: "ui-classic-180-left", fn: function():void { _levelState.snake.oneeightyLeft() }},
-        right180: { x: Starling.current.nativeStage.fullScreenWidth - (960 - 480), y: Starling.current.nativeStage.fullScreenHeight - (640 - 190), texture: "ui-classic-180-right", fn: function():void { _levelState.snake.oneeightyRight() }},
-        left: { x: 0, y: Starling.current.nativeStage.fullScreenHeight - (640 - 490), texture: "ui-classic-left", fn: function():void { _levelState.snake.moveLeft() }},
-        right: { x: Starling.current.nativeStage.fullScreenWidth - (960 - 480), y: Starling.current.nativeStage.fullScreenHeight - (640 - 490), texture: "ui-classic-right", fn: function():void { _levelState.snake.moveRight() }}  
+        left180: { x: 0, y: _center.x * 2 - (640 - 190), texture: "ui-classic-180-left", fn: function():void { _levelState.snake.oneeightyLeft() }},
+        right180: { x: _center.x * 2 - (960 - 480), y: _center.y * 2 - (640 - 190), texture: "ui-classic-180-right", fn: function():void { _levelState.snake.oneeightyRight() }},
+        left: { x: 0, y: _center.y * 2 - (640 - 490), texture: "ui-classic-left", fn: function():void { _levelState.snake.moveLeft() }},
+        right: { x: _center.x * 2 - (960 - 480), y: _center.y * 2 - (640 - 490), texture: "ui-classic-right", fn: function():void { _levelState.snake.moveRight() }}  
         };
       createButtonsHelper(buttonConfig);
     }
     
     private function createType2Buttons():void {
       var buttonConfig:Object = {
-        up: { x: Starling.current.nativeStage.fullScreenWidth - (960 - 490), y: Starling.current.nativeStage.fullScreenHeight - (640 - 190), texture: "ui-4way-bottom-up", fn: function():void { _levelState.snake.changeDirection(AssetRegistry.UP); }},
-        down: { x: Starling.current.nativeStage.fullScreenWidth - (960 - 490), y: Starling.current.nativeStage.fullScreenHeight - (640 - 500), texture: "ui-4way-bottom-down", fn: function():void { _levelState.snake.changeDirection(AssetRegistry.DOWN); }},
-        left: { x: 0, y: Starling.current.nativeStage.fullScreenHeight - (640 - 190), texture: "ui-4way-bottom-left", fn: function():void { _levelState.snake.changeDirection(AssetRegistry.LEFT);}},
-        right: { x: 190, y: Starling.current.nativeStage.fullScreenHeight - (640 - 190), texture: "ui-4way-bottom-right", fn: function():void { _levelState.snake.changeDirection(AssetRegistry.RIGHT); }}  
+        up: { x: _center.x * 2 - (960 - 490), y: _center.y * 2 - (640 - 190), texture: "ui-4way-bottom-up", fn: function():void { _levelState.snake.changeDirection(AssetRegistry.UP); }},
+        down: { x: _center.x * 2 - (960 - 490), y: _center.y * 2 - (640 - 500), texture: "ui-4way-bottom-down", fn: function():void { _levelState.snake.changeDirection(AssetRegistry.DOWN); }},
+        left: { x: 0, y: _center.y * 2 - (640 - 190), texture: "ui-4way-bottom-left", fn: function():void { _levelState.snake.changeDirection(AssetRegistry.LEFT);}},
+        right: { x: 190, y: _center.y * 2 - (640 - 190), texture: "ui-4way-bottom-right", fn: function():void { _levelState.snake.changeDirection(AssetRegistry.RIGHT); }}  
         };
       createButtonsHelper(buttonConfig);
     }    

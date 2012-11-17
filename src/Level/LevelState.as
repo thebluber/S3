@@ -166,11 +166,16 @@ package Level
     
     //tweens
     protected var _tweens:Vector.<GTween> = new Vector.<GTween>;
+	
+	//evil sprite for scaling and stuffs like that
+	private var _UIStage:Sprite = new Sprite();
     
     public function LevelState()
     {
       super();
       this.unscaled = true;
+	  
+	  
       AssetRegistry.loadGraphics([AssetRegistry.MENU, AssetRegistry.SNAKE, AssetRegistry.SCORING]);
       _center = new Point(Starling.current.nativeStage.fullScreenWidth / 2, Starling.current.nativeStage.fullScreenHeight / 2);
       setSpeed();
@@ -242,9 +247,17 @@ package Level
       addAboveSnake();
       addParticles();
       
-      addChild(_textLayer);
+      _UIStage.addChild(_textLayer);
       
       addHud();
+	  if (AssetRegistry.STAGE_WIDTH > Starling.current.nativeStage.fullScreenWidth) {
+		_UIStage.scaleX = Starling.current.nativeStage.fullScreenWidth / AssetRegistry.STAGE_WIDTH;
+		_UIStage.scaleY = Starling.current.nativeStage.fullScreenHeight / AssetRegistry.STAGE_HEIGHT;
+		_hud.scaleX = Starling.current.nativeStage.fullScreenWidth / AssetRegistry.STAGE_WIDTH;
+		_hud.scaleY =  Starling.current.nativeStage.fullScreenHeight / AssetRegistry.STAGE_HEIGHT;			
+		_center.x = AssetRegistry.STAGE_WIDTH / 2;
+		_center.y = AssetRegistry.STAGE_HEIGHT / 2;
+	  }
       
       //create bonusbar
       createBonusBar();
@@ -254,9 +267,10 @@ package Level
       _mchammer = new Quad(AssetRegistry.STAGE_WIDTH, AssetRegistry.STAGE_HEIGHT);
       _mchammer.alpha = 0;
       
-      addChild(_mchammer);
+      _UIStage.addChild(_mchammer);
       createPauseMenu();
       
+	  addChild(_UIStage);
       pause();
       showObjective();
       
@@ -265,7 +279,7 @@ package Level
     private function createSadAndEvilSnake():void 
     {
       _sadSnake = new Image(AssetRegistry.UIAtlas.getTexture("sadsnake"));
-      _sadSnake.x = _center.x- _sadSnake.width / 2;       
+      _sadSnake.x = _center.x - _sadSnake.width / 2;       
       _sadSnake.touchable = false;
       
       _sadText = new Image(AssetRegistry.UIAtlas.getTexture("SadSnakeText"));
@@ -338,7 +352,7 @@ package Level
     {
       //_hud = new HUD(new Radar(_eggs, _snake), ["lifes", "time"], this);
       _hud = new HUD(this);
-      addChild(_hud);
+	  addChild(_hud);
     }
     
     protected function eggCollide():void
@@ -407,8 +421,8 @@ package Level
       
       _sadText.y = -_sadText.height;
       
-      addChild(_sadSnake);
-      addChild(_sadText);
+      _UIStage.addChild(_sadSnake);
+      _UIStage.addChild(_sadText);
       
       // Use a GTween, as the Starling tweens are paused.
       _tweens.push(new GTween(_sadSnake, 2, {y: _center.y * 2 - _sadSnake.height}));
@@ -472,8 +486,8 @@ package Level
       var touch:Touch = event.getTouch(this, TouchPhase.ENDED);
       if (touch)
       {
-        removeChild(_sadSnake);
-        removeChild(_sadText);
+        _UIStage.removeChild(_sadSnake);
+        _UIStage.removeChild(_sadText);
         
         removeEventListener(TouchEvent.TOUCH, dieScreenTouch);
         resetSnake();
@@ -829,7 +843,7 @@ package Level
       image = new Image(AssetRegistry.UIAtlas.getTexture("game over_gravestone"));
       image.x = _center.x - image.width / 2;
       image.y = AssetRegistry.STAGE_HEIGHT;
-      addChild(image);
+      _UIStage.addChild(image);
       
       // Use a GTween, as the Starling tweens are paused.
       _tweens.push(new GTween(image, 2, {y: _center.y * 2 - image.height}));
@@ -965,8 +979,8 @@ package Level
       
       a = _camerax + _following.frameOffset.x + 7;
       b = _cameray + _following.frameOffset.y + 7;
-      centerX = -(a * _zoom) + AssetRegistry.STAGE_WIDTH / 2;
-      centerY = -(b * _zoom) + AssetRegistry.STAGE_HEIGHT / 2;
+      centerX = -(a * _zoom) + Starling.current.nativeStage.fullScreenWidth / 2;//AssetRegistry.STAGE_WIDTH / 2;
+      centerY = -(b * _zoom) + Starling.current.nativeStage.fullScreenHeight / 2;//AssetRegistry.STAGE_HEIGHT / 2;
       
       if (Math.abs(centerX - _levelStage.x) > WINDOW)
       {
@@ -1077,7 +1091,7 @@ package Level
       
       _pauseMenu.addScreen(PAUSEMAIN, new ScreenNavigatorItem(new PauseMainScreen(this)));
       _pauseMenu.defaultScreenID = PAUSEMAIN;
-      addChild(_pauseMenu);
+      _UIStage.addChild(_pauseMenu);
     
     }
     
@@ -1124,10 +1138,10 @@ package Level
       }
       _mchammer.touchable = true;
       _evilSnake.y = AssetRegistry.STAGE_HEIGHT;
-      addChild(_evilSnake);
+      _UIStage.addChild(_evilSnake);
 
       _evilText.y = 0;
-      addChild(_evilText);
+      _UIStage.addChild(_evilText);
       
       // Use a GTween, as the Starling tweens are paused.
       _tweens.push(new GTween(_evilSnake, 2, {y: _center.y * 2 - _evilSnake.height}));
@@ -1154,7 +1168,7 @@ package Level
       box.alpha = 0x44 / 0xff;
       box.x = _center.x- box.width / 2;
       box.y = 30;
-      addChild(box);
+      _UIStage.addChild(box);
       
       levelName.x = (box.width - levelName.width) / 2;
       levelName.y = box.y + 10;
@@ -1198,7 +1212,7 @@ package Level
       _scroller.y = box.y;
       _scroller.viewPort = _scrollable;
       
-      addChild(_scroller);
+      _UIStage.addChild(_scroller);
       
       var text:TextField = new TextField(700, 1250, "", "kroeger 06_65", fontSize, Color.WHITE);
       text.text = desc;
@@ -1210,7 +1224,7 @@ package Level
       
       _scroller.scrollBarDisplayMode = Scroller.SCROLL_BAR_DISPLAY_MODE_FIXED;
       
-      var that:LevelState = this;
+      
       
       var _goButton:Button = new Button();
       _goButton.label = "GO!";
@@ -1219,13 +1233,13 @@ package Level
       _goButton.x = _center.x - 800 / 2;
       _goButton.y = _center.y * 2 - 80;
       
-      addChild(_goButton);
+      _UIStage.addChild(_goButton);
       _goButton.onRelease.add(function(button:Button):void
         {
-          that.removeChild(_goButton);
-          that.removeChild(box);
-          that.removeChild(_scrollable);
-          that.removeChild(_scroller);
+          _UIStage.removeChild(_goButton);
+          _UIStage.removeChild(box);
+          _UIStage.removeChild(_scrollable);
+          _UIStage.removeChild(_scroller);
           unpause();
         });
       
@@ -1250,11 +1264,11 @@ package Level
           if (Math.abs(p.y - _tempPoint.y) < 50)
           {
             p.y += _scroller.verticalScrollPosition;
-            that.removeChild(_goButton);
-            that.removeChild(box);
-            that.removeChild(_scroller);
+            _UIStage.removeChild(_goButton);
+            _UIStage.removeChild(box);
+            _UIStage.removeChild(_scroller);
             unpause();
-            that.removeChild(_scrollable);
+            _UIStage.removeChild(_scrollable);
             
           }
         }
@@ -1500,6 +1514,8 @@ package Level
       _sadSnake = null;
       _sadText.dispose();
       _sadText = null;
+	  _UIStage.dispose();
+	  _UIStage = null;
       
       for each (var particle:PDParticleSystem in _particles)
       {

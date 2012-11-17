@@ -100,7 +100,7 @@ package
          starling.stage.stageWidth = 960;
        */
       
-      starling = new starling.core.Starling(StageManager, stage, new Rectangle(0, yy, stage.fullScreenWidth, stage.fullScreenHeight));
+      starling = new starling.core.Starling(StageManager, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
       
       var loadingSprite:Sprite = new Sprite()
       var loadingBMP:Bitmap = new AssetRegistry.LoadingPNG();

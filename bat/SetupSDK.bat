@@ -2,7 +2,7 @@
 
 :: Path to Flex SDK
 ::set FLEX_SDK=C:\Users\Roger\SDKs\FlexAir3.2
-set FLEX_SDK=C:\Users\Roger\SDKs\FlexAir3.4
+set FLEX_SDK=C:\Users\edv\Downloads\flex_sdk_4.6
 :: Path to Android SDK
 set ANDROID_SDK=C:\Program Files (x86)\FlashDevelop\Tools\android
 set JAVA_HOME=C:\Program Files (x86)\Java\jdk1.7.0_07

@@ -43,7 +43,7 @@ package Menu
 			addChild(_greyBox);
 			
 			var _extrasHeading:TextField = new TextField(_greyBox.width, 50, AssetRegistry.Strings.EXTRAS, "kroeger 06_65", 50, Color.WHITE);
-			_extrasHeading.x = (Starling.current.stage.stageWidth - _extrasHeading.width) / 2;
+			_extrasHeading.x = (AssetRegistry.STAGE_WIDTH - _extrasHeading.width) / 2;
 			_extrasHeading.y = _greyBox.y + 10;
 			addChild(_extrasHeading);
       
@@ -53,7 +53,7 @@ package Menu
       leaderboard.label = "Level Leaderboards";
       leaderboard.width = 400;
       leaderboard.height = 80;
-      leaderboard.x =  (Starling.current.stage.stageWidth - leaderboard.width) / 2;
+      leaderboard.x =  (AssetRegistry.STAGE_WIDTH - leaderboard.width) / 2;
       leaderboard.y = _extrasHeading.y + _extrasHeading.height + 10;
       addChild(leaderboard);
       leaderboard.onRelease.add(function(btn:Button):void
@@ -66,7 +66,7 @@ package Menu
 			video1.label = AssetRegistry.Strings.VIDEO1;
 			video1.width = 240;
 			video1.height = 80;
-			video1.x = Starling.current.stage.stageWidth / 2 - video1.width - 50;
+			video1.x = AssetRegistry.STAGE_WIDTH / 2 - video1.width - 50;
 			video1.y = _extrasHeading.y + _extrasHeading.height + 150;
 			
 			video1.onRelease.add(function(btn:Button):void
@@ -80,7 +80,7 @@ package Menu
 			video2.height = 80;
 			video2.x = AssetRegistry.STAGE_WIDTH / 2 + 50;
 			video2.y = video1.y;
-      video2.onRelease.add(function(btn:Button):void
+			video2.onRelease.add(function(btn:Button):void
 				{
 					dispatchEventWith(ManagedStage.SWITCHING, true, {stage: VideoPlayer, args: {videoURI: "IntroLv1.mp4", stage: MainMenu}});
 				});
@@ -89,7 +89,7 @@ package Menu
 			video3.label = AssetRegistry.Strings.VIDEO3;
 			video3.width = 240;
 			video3.height = 80;
-      video3.onRelease.add(function(btn:Button):void
+			video3.onRelease.add(function(btn:Button):void
 				{
 					dispatchEventWith(ManagedStage.SWITCHING, true, {stage: VideoPlayer, args: {videoURI: "Outro.mp4", stage: MainMenu}});
 				});
@@ -98,7 +98,7 @@ package Menu
 			video4.label = AssetRegistry.Strings.VIDEO4;
 			video4.width = 240;
 			video4.height = 80;
-      video4.onRelease.add(function(btn:Button):void
+			video4.onRelease.add(function(btn:Button):void
 				{
 					dispatchEventWith(ManagedStage.SWITCHING, true, {stage: VideoPlayer, args: {videoURI: "Credits.mp4", stage: MainMenu}});
 				});
@@ -114,7 +114,7 @@ package Menu
 			}
 			else
 			{
-				video4.x = (Starling.current.stage.stageWidth - video4.width) / 2;
+				video4.x = (AssetRegistry.STAGE_WIDTH - video4.width) / 2;
 			}
 			addChild(video1);
 			addChild(video2);
@@ -123,12 +123,12 @@ package Menu
 			var extrasxButton:Image = new Image(AssetRegistry.Alpha_1_Atlas.getTexture("x"));
 			
 			//xButton.scaleX = xButton.scaleY = 1.5;
-			extrasxButton.x = Starling.current.stage.stageWidth - extrasxButton.width - 10;
+			extrasxButton.x = AssetRegistry.STAGE_WIDTH - extrasxButton.width - 10;
 			
 			extrasxButton.y = 90;
 			var exit:Quad = new Quad(140, 250, 0xffffff);
 			exit.alpha = 0;
-			exit.x = Starling.current.stage.stageWidth - exit.width;
+			exit.x = AssetRegistry.STAGE_WIDTH - exit.width;
 			exit.y = 80;
 			
 			exit.addEventListener(TouchEvent.TOUCH, function(event:TouchEvent):void

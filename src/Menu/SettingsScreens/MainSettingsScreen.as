@@ -70,11 +70,11 @@ package Menu.SettingsScreens
       
       //add x-button
       var xButton:Image = new Image(AssetRegistry.Alpha_1_Atlas.getTexture("x"));
-      xButton.x = Starling.current.stage.stageWidth - xButton.width - 10;
+      xButton.x = AssetRegistry.STAGE_WIDTH - xButton.width - 10;
       xButton.y = 90;
       var exit:Quad = new Quad(140, 250, 0xffffff);
       exit.alpha = 0;
-      exit.x = Starling.current.stage.stageWidth - exit.width;
+      exit.x = AssetRegistry.STAGE_WIDTH - exit.width;
       exit.y = 80;
       var that:MainSettingsScreen = this;
       exit.addEventListener(TouchEvent.TOUCH, function(event:TouchEvent):void

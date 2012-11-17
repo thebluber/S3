@@ -1,6 +1,5 @@
 package UI
 {
-    import flash.printing.PrintMethod;
     import starling.animation.IAnimatable;
     import starling.display.Sprite;
     import starling.events.Event;

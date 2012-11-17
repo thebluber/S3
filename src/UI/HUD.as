@@ -35,7 +35,8 @@ package UI
     public static const DISPLAY_POINTS:String = "displaypoints";
     
     private var _controls:Sprite;
-    private var _top:Image;
+    private var _topr:Image;
+	private var _topl:Image;
     private var _buttons:Vector.<Button>;
     private var _levelState:LevelState;
     private var _iconsCfg:Object = { };
@@ -92,7 +93,8 @@ package UI
       createRadarEggs();
       
       // UIAtlas.
-      addChild(_top);
+      addChild(_topl);
+	  addChild(_topr);
       addChild(_controls);
       addChild(_radarCircle);
       // Alpha_1_Atlas.
@@ -500,20 +502,27 @@ package UI
       _textLayer.dispose();
       _textLayer = null;
     }
-    
+    [Embed(source = "../../assets/UI/UIObenPausenknopfV2_rechts.png")]
+    private static const UIRight:Class;
+	[Embed(source = "../../assets/UI/UIObenPausenknopfV2_links.png")]
+    private static const UILeft:Class;
     private function createTop():void {
-      _top = new Image(AssetRegistry.UIAtlas.getTexture("ui-top"));
-      _top.addEventListener(TouchEvent.TOUCH, function(evt:TouchEvent):void {
-          if (evt.getTouch(_top, TouchPhase.ENDED)) {
+      _topl = new Image(Texture.fromBitmap(new UILeft));
+	  _topr = new Image(Texture.fromBitmap(new UIRight));
+	  _topr.x = Starling.current.nativeStage.fullScreenWidth - _topr.width;
+      _topr.addEventListener(TouchEvent.TOUCH, function(evt:TouchEvent):void {
+          if (evt.getTouch(_topr, TouchPhase.ENDED)) {
             _levelState.togglePause();
           }
       });
     }
     
     private function destroyTop():void {
-      _top.removeEventListeners(TouchEvent.TOUCH);
-      _top.dispose();
-      _top = null;      
+      _topr.removeEventListeners(TouchEvent.TOUCH);
+      _topr.dispose();
+      _topr = null;
+      _topl.dispose();
+      _topl = null; 
     }
     
     private function createControls():void {

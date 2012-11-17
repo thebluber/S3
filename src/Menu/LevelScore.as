@@ -381,7 +381,7 @@ package Menu
       _backToMenuButton.width = buttonWidth;
       _backToMenuButton.height = 80;
       _backToMenuButton.x = 0;
-      _backToMenuButton.y = Starling.current.stage.stageHeight - _backToMenuButton.height;
+      _backToMenuButton.y = AssetRegistry.STAGE_HEIGHT - _backToMenuButton.height;
       _backToMenuButton.onRelease.add(function(button:Button):void
         {
           backToMenu();

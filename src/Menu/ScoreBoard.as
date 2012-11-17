@@ -203,7 +203,7 @@ package Menu
 			}
 			_next.height = 80;
 			
-			_next.y = Starling.current.stage.stageHeight - _next.height;
+			_next.y = AssetRegistry.STAGE_HEIGHT - _next.height;
 			
 			var that:ScoreBoard = this;
 			

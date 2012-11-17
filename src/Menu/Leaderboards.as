@@ -279,7 +279,7 @@ package Menu
         _back.x = 720;
       }
       _back.height = 80;
-      _back.y = Starling.current.stage.stageHeight - _back.height;
+      _back.y = AssetRegistry.STAGE_HEIGHT - _back.height;
       
       var that:Leaderboards = this;
       _back.onRelease.add(function(button:Button):void

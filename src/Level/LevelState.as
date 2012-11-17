@@ -411,7 +411,7 @@ package Level
       addChild(_sadText);
       
       // Use a GTween, as the Starling tweens are paused.
-      _tweens.push(new GTween(_sadSnake, 2, {y: AssetRegistry.STAGE_HEIGHT - _sadSnake.height}));
+      _tweens.push(new GTween(_sadSnake, 2, {y: _center.y * 2 - _sadSnake.height}));
       _tweens.push(new GTween(_sadText, 2, {y: 0}));
       
       var registerTouchHandler:Function = function():void
@@ -832,7 +832,7 @@ package Level
       addChild(image);
       
       // Use a GTween, as the Starling tweens are paused.
-      _tweens.push(new GTween(image, 2, {y: AssetRegistry.STAGE_HEIGHT - image.height}));
+      _tweens.push(new GTween(image, 2, {y: _center.y * 2 - image.height}));
       AssetRegistry.soundmanager.playSound("gameOverSound");
       
       var registerTouchHandler:Function = function():void
@@ -1130,7 +1130,7 @@ package Level
       addChild(_evilText);
       
       // Use a GTween, as the Starling tweens are paused.
-      _tweens.push(new GTween(_evilSnake, 2, {y: AssetRegistry.STAGE_HEIGHT - _evilSnake.height}));
+      _tweens.push(new GTween(_evilSnake, 2, {y: _center.y * 2 - _evilSnake.height}));
       _tweens.push(new GTween(_evilText, 2, {y: 0}));
       
       var registerTouchHandler:Function = function():void
@@ -1150,7 +1150,7 @@ package Level
       
       var heading:TextField = new TextField(600, 60, AssetRegistry.Strings.OBJECTIVE, "kroeger 06_65", 60, Color.WHITE);
       
-      var box:Quad = new Quad(800, 535, 0);
+      var box:Quad = new Quad(800, _center.y * 2 - 110, 0);
       box.alpha = 0x44 / 0xff;
       box.x = _center.x- box.width / 2;
       box.y = 30;

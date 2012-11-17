@@ -221,7 +221,7 @@ package Menu
 			var self:ScoreBoard = this;
 			var func:Function = function(tween:GTween):void
 			{
-				_medalTween.setValues({x: 960});
+				_medalTween.setValues({x: AssetRegistry.STAGE_WIDTH});
 				_medalTween.onComplete = func2;
 				//AssetRegistry.soundmanager.playSound("medalSound1");
 			}
@@ -253,7 +253,7 @@ package Menu
 			
 			if (_medal)
 			{
-				_medalTween = new GTween(_medal, 1.5, { x: 105, y: -100 }, { ease: Elastic.easeInOut, onComplete: func } );
+				_medalTween = new GTween(_medal, 1.5, { x: (AssetRegistry.STAGE_WIDTH - _medal.width) / 2, y: (AssetRegistry.STAGE_HEIGHT - _medal.height) / 2 }, { ease: Elastic.easeInOut, onComplete: func } );
 				_tweens.push(_medalTween);
 				AssetRegistry.soundmanager.playSound("medalSound1");
 				addChild(_medal);

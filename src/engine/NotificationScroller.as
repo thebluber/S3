@@ -29,7 +29,7 @@ package engine
     {
       super();
       
-      _bg = new Quad(Starling.current.stage.stageWidth, 80, Color.BLACK);
+      _bg = new Quad(AssetRegistry.STAGE_WIDTH, 80, Color.BLACK);
       _bg.alpha = 0.3;
       addChild(_bg);
       

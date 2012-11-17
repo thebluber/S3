@@ -219,8 +219,8 @@ package UI
           txt.visible = true;
           txt.scaleX = txt.scaleY = 1;
           txt.pivotX = txt.pivotY = 0;
-          txt.height = AssetRegistry.STAGE_HEIGHT;
-          txt.width = AssetRegistry.STAGE_WIDTH;
+          txt.height = Starling.current.nativeStage.fullScreenHeight;
+          txt.width =  Starling.current.nativeStage.fullScreenWidth;
           txt.hAlign = HAlign.CENTER;
           trace("Recycling old message");
           return _textMessagesPool[i];
@@ -283,7 +283,7 @@ package UI
         textMessage.y = 640;      
         //tween.animate("x", 280);
         //tween.animate("y", -(Math.sqrt(80000)/2));
-        tween.animate("x", 350);
+        tween.animate("x", (Starling.current.nativeStage.fullScreenWidth - textMessage.width / textMessage.scaleX) / 2);
         tween.animate("y", -40);
         //tween.animate("rotation", - 30 * (Math.PI / 180));        
       } else {
@@ -292,7 +292,7 @@ package UI
         textMessage.y = 640;
         //tween.animate("x", 480);
         //tween.animate("y", -(Math.sqrt(80000)*2.5));
-        tween.animate("x", 350);
+        tween.animate("x", (Starling.current.nativeStage.fullScreenWidth - textMessage.width / textMessage.scaleX) / 2);
         tween.animate("y", -40);
         /*tween.onUpdate = function():void {
           textMessage.pivotX = textMessage.width;

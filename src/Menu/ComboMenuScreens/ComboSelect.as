@@ -51,7 +51,7 @@ package Menu.ComboMenuScreens
       addChild(greybox); 
 	  
 	  _selComboHeading = new TextField(greybox.width, 60, AssetRegistry.Strings.SELECTABLECOMBO, "kroeger 06_65", 60, Color.WHITE);
-      _selComboHeading.x = (Starling.current.stage.stageWidth - _selComboHeading.width) / 2;
+      _selComboHeading.x = (AssetRegistry.STAGE_WIDTH - _selComboHeading.width) / 2;
       _selComboHeading.y = 10;
       addChild(_selComboHeading);
 	  
@@ -64,7 +64,7 @@ package Menu.ComboMenuScreens
 
       var exit:Quad = new Quad(140, 250, 0xffffff);
       exit.alpha = 0;
-      exit.x = Starling.current.stage.stageWidth - exit.width;
+      exit.x = AssetRegistry.STAGE_WIDTH - exit.width;
       exit.y = 30;
       exit.addEventListener(TouchEvent.TOUCH, function(event:TouchEvent):void {
          var touch:Touch = event.getTouch(exit, TouchPhase.ENDED);

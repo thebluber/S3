@@ -52,7 +52,7 @@ package Menu.ComboMenuScreens
       addChild(greybox); 
 	  
 	    _infoHeading = new TextField(greybox.width, 60, AssetRegistry.Strings.ARCADEINFOHEADING, "kroeger 06_65", 60, Color.WHITE);
-      _infoHeading.x = (Starling.current.stage.stageWidth - _infoHeading.width) / 2;
+      _infoHeading.x = (AssetRegistry.STAGE_WIDTH - _infoHeading.width) / 2;
       _infoHeading.y = 10;
       addChild(_infoHeading);
       
@@ -69,7 +69,7 @@ package Menu.ComboMenuScreens
 
       var exit:Quad = new Quad(140, 250, 0xffffff);
       exit.alpha = 0;
-      exit.x = Starling.current.stage.stageWidth - exit.width;
+      exit.x = AssetRegistry.STAGE_WIDTH - exit.width;
       exit.y = 30;
       exit.addEventListener(TouchEvent.TOUCH, function(event:TouchEvent):void {
          var touch:Touch = event.getTouch(exit, TouchPhase.ENDED);

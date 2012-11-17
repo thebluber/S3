@@ -106,7 +106,8 @@ package
       var loadingBMP:Bitmap = new AssetRegistry.LoadingPNG();
       loadingBMP.x = Starling.current.viewPort.x;
       loadingBMP.y = Starling.current.viewPort.y;
-      loadingBMP.scaleX = loadingBMP.scaleY = AssetRegistry.SCALE;
+      loadingBMP.scaleX = Starling.current.nativeStage.fullScreenWidth / AssetRegistry.STAGE_WIDTH;
+	  loadingBMP.scaleY = Starling.current.nativeStage.fullScreenHeight / AssetRegistry.STAGE_HEIGHT;
       loadingSprite.addChild(loadingBMP);
       
       addChild(loadingSprite);

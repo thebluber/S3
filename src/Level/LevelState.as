@@ -161,6 +161,8 @@ package Level
     
     protected var _level4Animation:Boolean = false;
     private var _shadow:Image;
+	
+	private var _center:Point;
     
     //tweens
     protected var _tweens:Vector.<GTween> = new Vector.<GTween>;
@@ -170,7 +172,7 @@ package Level
       super();
       this.unscaled = true;
       AssetRegistry.loadGraphics([AssetRegistry.MENU, AssetRegistry.SNAKE, AssetRegistry.SCORING]);
-      
+      _center = new Point(Starling.current.nativeStage.fullScreenWidth / 2, Starling.current.nativeStage.fullScreenHeight / 2);
       setSpeed();
       
       _currentCombos = null;
@@ -263,19 +265,19 @@ package Level
     private function createSadAndEvilSnake():void 
     {
       _sadSnake = new Image(AssetRegistry.UIAtlas.getTexture("sadsnake"));
-      _sadSnake.x = (AssetRegistry.STAGE_WIDTH - _sadSnake.width) / 2;       
+      _sadSnake.x = _center.x- _sadSnake.width / 2;       
       _sadSnake.touchable = false;
       
       _sadText = new Image(AssetRegistry.UIAtlas.getTexture("SadSnakeText"));
-      _sadText.x = (AssetRegistry.STAGE_WIDTH - _sadText.width) / 2;      
+      _sadText.x = _center.x - _sadText.width / 2;      
       _sadText.touchable = false;
       
       _evilSnake = new Image(AssetRegistry.UIAtlas.getTexture("snake_evillaugh"));
-      _evilSnake.x = (AssetRegistry.STAGE_WIDTH - _evilSnake.width) / 2;      
+      _evilSnake.x = _center.x - _evilSnake.width / 2;      
       _evilSnake.touchable = false;
           
       _evilText = new Image(AssetRegistry.UIAtlas.getTexture("Snake_EvilLaughText"));
-      _evilText.x = (AssetRegistry.STAGE_WIDTH - _evilText.width) / 2;      
+      _evilText.x = _center.x - _evilText.width / 2;      
       _evilText.touchable = false;
     }
     
@@ -825,7 +827,7 @@ package Level
       _mchammer.touchable = true;
       var image:Image;
       image = new Image(AssetRegistry.UIAtlas.getTexture("game over_gravestone"));
-      image.x = (AssetRegistry.STAGE_WIDTH - image.width) / 2;
+      image.x = _center.x - image.width / 2;
       image.y = AssetRegistry.STAGE_HEIGHT;
       addChild(image);
       
@@ -1150,7 +1152,7 @@ package Level
       
       var box:Quad = new Quad(800, 535, 0);
       box.alpha = 0x44 / 0xff;
-      box.x = (960 - box.width) / 2;
+      box.x = _center.x- box.width / 2;
       box.y = 30;
       addChild(box);
       
@@ -1214,8 +1216,8 @@ package Level
       _goButton.label = "GO!";
       _goButton.width = 800;
       _goButton.height = 80;
-      _goButton.x = (AssetRegistry.STAGE_WIDTH - 800) / 2;
-      _goButton.y = AssetRegistry.STAGE_HEIGHT - 80;
+      _goButton.x = _center.x - 800 / 2;
+      _goButton.y = _center.y * 2 - 80;
       
       addChild(_goButton);
       _goButton.onRelease.add(function(button:Button):void

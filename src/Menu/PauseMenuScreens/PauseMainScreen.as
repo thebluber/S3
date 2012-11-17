@@ -1,5 +1,6 @@
 package Menu.PauseMenuScreens
 {
+  import flash.geom.Point;
   import Level.LevelState;
   import org.josht.starling.foxhole.controls.Button;
   import org.josht.starling.foxhole.controls.Screen;
@@ -40,15 +41,16 @@ package Menu.PauseMenuScreens
     private var _sfxHeading:TextField;
     private var _musicHeading:TextField;
     private var _controlsHeading:TextField;
+	private var _center:Point;
     
     public function PauseMainScreen(levelstate:LevelState)
     
     {
       super();
       _levelstate = levelstate;
-      
+      _center = new Point(Starling.current.nativeStage.fullScreenWidth / 2, Starling.current.nativeStage.fullScreenHeight / 2);
       _greyBox = new Quad(710, 480, 0);
-      _greyBox.x = 125;
+      _greyBox.x = _center.x - 710 / 2;
       _greyBox.y = 95;
       _greyBox.alpha = 0.3;
       addChild(_greyBox);
@@ -65,7 +67,7 @@ package Menu.PauseMenuScreens
       }
 
       _pauseHeading = new TextField(_greyBox.width, 80, AssetRegistry.Strings.PAUSE, "kroeger 06_65", 60, Color.WHITE);
-      _pauseHeading.x = (AssetRegistry.STAGE_WIDTH - _pauseHeading.width) / 2;
+      _pauseHeading.x = _center.x - _pauseHeading.width / 2;
       _pauseHeading.y = 100;
       addChild(_pauseHeading);
       _pauseHeading.addEventListener(TouchEvent.TOUCH,  onTouch);
@@ -109,7 +111,7 @@ package Menu.PauseMenuScreens
 		{
 			var combos:Array = AssetRegistry.COMBO_TRIGGERS;
 			
-			var j:int = (AssetRegistry.STAGE_WIDTH - 88) / 2 - 100;
+			var j:int = _center.x - 144;
 			for (var i:int = 0; i < 3; i++)
 			{ 
 				var combo:Image;

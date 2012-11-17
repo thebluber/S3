@@ -242,14 +242,18 @@ package Menu
 			if (_scores.bigMedal)
 			{
 				_medal = new Image(AssetRegistry.Alpha_025_Atlas.getTexture(_scores.bigMedal));
+				_medal.scaleX =  AssetRegistry.STAGE_WIDTH / Starling.current.nativeStage.fullScreenWidth;
+				_medal.scaleY =  AssetRegistry.STAGE_HEIGHT / Starling.current.nativeStage.fullScreenHeight;
 				_medal.x = -800;
 				_medal.y = 0;
 				_medalSmall = new Image(AssetRegistry.Alpha_1_Atlas.getTexture(_scores.smallMedal));
+				_medalSmall.scaleX =  AssetRegistry.STAGE_WIDTH / Starling.current.nativeStage.fullScreenWidth;
+				_medalSmall.scaleY =  AssetRegistry.STAGE_HEIGHT / Starling.current.nativeStage.fullScreenHeight;
 			}
 			
 			if (_medal)
 			{
-				_medalTween = new GTween(_medal, 1.5, {x: 105, y: -100}, {ease: Elastic.easeInOut, onComplete: func});
+				_medalTween = new GTween(_medal, 1.5, { x: 105, y: -100 }, { ease: Elastic.easeInOut, onComplete: func } );
 				_tweens.push(_medalTween);
 				AssetRegistry.soundmanager.playSound("medalSound1");
 				addChild(_medal);

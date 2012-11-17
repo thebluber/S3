@@ -43,7 +43,10 @@ package Menu
     
     public function LevelSelect()
     {
-      
+	
+	  this.unscaled = true;
+	 // this.scaleX = this.scaleY = Starling.current.nativeStage.fullScreenWidth / AssetRegistry.STAGE_WIDTH;
+	  
       AssetRegistry.loadGraphics([AssetRegistry.LEVELSELECT, AssetRegistry.SCORING]);
       _scroller = new Scroller();
       _scrollable = new Sprite();
@@ -74,6 +77,7 @@ package Menu
       _scroller.hasElasticEdges = false;
       _scroller.viewPort = _scrollable;
       _scroller.setSize(960, 640);
+	  _scroller.scaleX = _scroller.scaleY = Starling.current.nativeStage.fullScreenWidth / AssetRegistry.STAGE_WIDTH;
       
       _scrollable.addEventListener(TouchEvent.TOUCH, onTouch);
       

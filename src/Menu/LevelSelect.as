@@ -1,5 +1,6 @@
 package Menu
 {
+  import adobe.utils.CustomActions;
   import engine.ManagedStage;
   import flash.geom.Point;
   import org.josht.starling.foxhole.controls.ScrollContainer;
@@ -45,7 +46,7 @@ package Menu
     {
 	
 	  this.unscaled = true;
-	 // this.scaleX = this.scaleY = Starling.current.nativeStage.fullScreenWidth / AssetRegistry.STAGE_WIDTH;
+	  //this.scaleX = this.scaleY = Starling.current.nativeStage.fullScreenWidth / AssetRegistry.STAGE_WIDTH;
 	  
       AssetRegistry.loadGraphics([AssetRegistry.LEVELSELECT, AssetRegistry.SCORING]);
       _scroller = new Scroller();
@@ -76,9 +77,10 @@ package Menu
       
       _scroller.hasElasticEdges = false;
       _scroller.viewPort = _scrollable;
-      _scroller.setSize(960, 640);
-	  _scroller.scaleX = _scroller.scaleY = Starling.current.nativeStage.fullScreenWidth / AssetRegistry.STAGE_WIDTH;
-      
+      _scroller.setSize(Starling.current.nativeStage.fullScreenWidth, Starling.current.nativeStage.fullScreenHeight);
+	  _scrollable.scaleX = _scrollable.scaleY = Starling.current.nativeStage.fullScreenWidth / AssetRegistry.STAGE_WIDTH;
+	  
+	 
       _scrollable.addEventListener(TouchEvent.TOUCH, onTouch);
       
       addChild(_scroller);

@@ -269,8 +269,7 @@ package Level
       pause();
 	  updateCamera();
 	  addHud();
-	  showObjective();  
-	  addChild(_UIStage);
+	addChild(_UIStage);
 	  if (AssetRegistry.STAGE_WIDTH > Starling.current.nativeStage.fullScreenWidth) {
 		_UIStage.scaleX = Starling.current.nativeStage.fullScreenWidth / AssetRegistry.STAGE_WIDTH;
 		_UIStage.scaleY = Starling.current.nativeStage.fullScreenHeight / AssetRegistry.STAGE_HEIGHT;
@@ -279,7 +278,8 @@ package Level
 		_center.x = AssetRegistry.STAGE_WIDTH / 2;
 		_center.y = AssetRegistry.STAGE_HEIGHT / 2;
 	  }
-	  
+	    showObjective();  
+		
       
     }
     
@@ -1164,7 +1164,7 @@ package Level
     
     protected function showObjectiveBox(desc:String, goals:Array, fontSize:int = 50):void
     {
-      var mchammer:Quad = new Quad(Starling.current.nativeStage.fullScreenWidth, Starling.current.nativeStage.fullScreenHeight);
+      var mchammer:Quad = new Quad(_center.x * 2, _center.y * 2);
 	  mchammer.alpha = 0;
 	  mchammer.touchable = true;
 	  _UIStage.addChild(mchammer);

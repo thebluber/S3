@@ -249,6 +249,10 @@ package Menu
 				_medalSmall = new Image(AssetRegistry.Alpha_1_Atlas.getTexture(_scores.smallMedal));
 				_medalSmall.scaleX =  AssetRegistry.STAGE_WIDTH / Starling.current.nativeStage.fullScreenWidth;
 				_medalSmall.scaleY =  AssetRegistry.STAGE_HEIGHT / Starling.current.nativeStage.fullScreenHeight;
+				if (AssetRegistry.STAGE_WIDTH > Starling.current.nativeStage.fullScreenWidth) {
+					_medal.scaleX = _medal.scaleY = 1;
+					_medalSmall.scaleX = _medalSmall.scaleY = 1;
+				}
 			}
 			
 			if (_medal)

@@ -569,7 +569,7 @@ package UI
     
     private function createType1Buttons():void {
       var buttonConfig:Object = {
-        left180: { x: 0, y: _center.x * 2 - (640 - 190), texture: "ui-classic-180-left", fn: function():void { _levelState.snake.oneeightyLeft() }},
+        left180: { x: 0, y: _center.y * 2 - (640 - 190), texture: "ui-classic-180-left", fn: function():void { _levelState.snake.oneeightyLeft() }},
         right180: { x: _center.x * 2 - (960 - 480), y: _center.y * 2 - (640 - 190), texture: "ui-classic-180-right", fn: function():void { _levelState.snake.oneeightyRight() }},
         left: { x: 0, y: _center.y * 2 - (640 - 490), texture: "ui-classic-left", fn: function():void { _levelState.snake.moveLeft() }},
         right: { x: _center.x * 2 - (960 - 480), y: _center.y * 2 - (640 - 490), texture: "ui-classic-right", fn: function():void { _levelState.snake.moveRight() }}  

@@ -252,7 +252,25 @@ package Level
       
       _UIStage.addChild(_textLayer);
       
-      addHud();
+
+	  createSadAndEvilSnake();
+     
+      //create bonusbar
+      createBonusBar();
+      
+      startAt(_startPos.x, _startPos.y);
+      
+      _mchammer = new Quad(Starling.current.nativeStage.fullScreenWidth, Starling.current.nativeStage.fullScreenHeight);
+      _mchammer.alpha = 0;
+      addChild(_mchammer);
+      createPauseMenu();
+      
+	  
+      pause();
+	  updateCamera();
+	  addHud();
+	  showObjective();  
+	  addChild(_UIStage);
 	  if (AssetRegistry.STAGE_WIDTH > Starling.current.nativeStage.fullScreenWidth) {
 		_UIStage.scaleX = Starling.current.nativeStage.fullScreenWidth / AssetRegistry.STAGE_WIDTH;
 		_UIStage.scaleY = Starling.current.nativeStage.fullScreenHeight / AssetRegistry.STAGE_HEIGHT;
@@ -261,22 +279,7 @@ package Level
 		_center.x = AssetRegistry.STAGE_WIDTH / 2;
 		_center.y = AssetRegistry.STAGE_HEIGHT / 2;
 	  }
-      createSadAndEvilSnake();
-      //create bonusbar
-      createBonusBar();
-      
-      startAt(_startPos.x, _startPos.y);
-      
-      _mchammer = new Quad(AssetRegistry.STAGE_WIDTH, AssetRegistry.STAGE_HEIGHT);
-      _mchammer.alpha = 0;
-      
-      _UIStage.addChild(_mchammer);
-      createPauseMenu();
-      
-	  addChild(_UIStage);
-      pause();
-	  updateCamera();
-      showObjective();
+	  
       
     }
     
@@ -1161,7 +1164,10 @@ package Level
     
     protected function showObjectiveBox(desc:String, goals:Array, fontSize:int = 50):void
     {
-      
+      var mchammer:Quad = new Quad(Starling.current.nativeStage.fullScreenWidth, Starling.current.nativeStage.fullScreenHeight);
+	  mchammer.alpha = 0;
+	  mchammer.touchable = true;
+	  _UIStage.addChild(mchammer);
       var _scrollable:Sprite = new Sprite();
       
       var levelName:TextField = new TextField(600, 60, SaveGame.levelName, "kroeger 06_65", 60, Color.WHITE);
@@ -1240,6 +1246,7 @@ package Level
       _UIStage.addChild(_goButton);
       _goButton.onRelease.add(function(button:Button):void
         {
+		  _UIStage.removeChild(mchammer);
           _UIStage.removeChild(_goButton);
           _UIStage.removeChild(box);
           _UIStage.removeChild(_scrollable);
@@ -1268,11 +1275,12 @@ package Level
           if (Math.abs(p.y - _tempPoint.y) < 50)
           {
             p.y += _scroller.verticalScrollPosition;
+			_UIStage.removeChild(mchammer);
             _UIStage.removeChild(_goButton);
             _UIStage.removeChild(box);
             _UIStage.removeChild(_scroller);
-            unpause();
             _UIStage.removeChild(_scrollable);
+			unpause();
             
           }
         }

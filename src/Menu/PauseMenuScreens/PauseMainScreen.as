@@ -49,6 +49,10 @@ package Menu.PauseMenuScreens
       super();
       _levelstate = levelstate;
       _center = new Point(Starling.current.nativeStage.fullScreenWidth / 2, Starling.current.nativeStage.fullScreenHeight / 2);
+	  if (AssetRegistry.STAGE_WIDTH > Starling.current.nativeStage.fullScreenWidth) {
+		  _center.x = AssetRegistry.STAGE_WIDTH / 2;
+		  _center.y = AssetRegistry.STAGE_HEIGHT / 2;
+	  }
       _greyBox = new Quad(710, 480, 0);
       _greyBox.x = _center.x - 710 / 2;
       _greyBox.y = 95;

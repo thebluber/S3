@@ -90,7 +90,7 @@ package Level
     private var _currentCombos:Array;
     protected var _combos:int = 0;
     protected var _score:int = 0;
-    private var _zoom:Number = 2;
+    private var _zoom:Number;
     private var _following:Snake.Head;
     private var _possibleSwipe:Boolean = false;
     private var _swipeY:int;
@@ -175,6 +175,9 @@ package Level
       super();
       this.unscaled = true;
 	  
+	  //adjust zoom factor
+	  var ratio:Number = Starling.current.nativeStage.fullScreenWidth / AssetRegistry.STAGE_WIDTH;
+	  _zoom =  2 * ratio;
 	  
       AssetRegistry.loadGraphics([AssetRegistry.MENU, AssetRegistry.SNAKE, AssetRegistry.SCORING]);
       _center = new Point(Starling.current.nativeStage.fullScreenWidth / 2, Starling.current.nativeStage.fullScreenHeight / 2);
@@ -198,7 +201,7 @@ package Level
       _comboSet = new Combo.ComboSet();
       _comboSet.addCombo(new Combo.FasterCombo());
       
-      createSadAndEvilSnake();
+      
       
       // Level Stage.
       // TODO: Should probably be managed with a real camera.
@@ -258,7 +261,7 @@ package Level
 		_center.x = AssetRegistry.STAGE_WIDTH / 2;
 		_center.y = AssetRegistry.STAGE_HEIGHT / 2;
 	  }
-      
+      createSadAndEvilSnake();
       //create bonusbar
       createBonusBar();
       
@@ -272,6 +275,7 @@ package Level
       
 	  addChild(_UIStage);
       pause();
+	  updateCamera();
       showObjective();
       
     }
@@ -1011,9 +1015,9 @@ package Level
       //_levelStage.x = Math.min(_levelStage.x, frame * zoom);
       //_levelStage.y = Math.min(_levelStage.y, frame * zoom);
       // TODO: Should be computed only once.
-      _levelStage.x = Math.max(-((_bg.width + frame) * _zoom) + AssetRegistry.STAGE_HEIGHT, _levelStage.x);
-      _levelStage.y = Math.max(-((_bg.height + frame) * _zoom) + AssetRegistry.STAGE_HEIGHT, _levelStage.y);
-    
+      _levelStage.x = Math.max(-((_bg.width + frame) * _zoom) + Starling.current.nativeStage.fullScreenWidth, _levelStage.x);
+      _levelStage.y = Math.max(-((_bg.height + frame) * _zoom) +Starling.current.nativeStage.fullScreenHeight, _levelStage.y);
+	  trace("LevelStageX" + _levelStage.x);
     }
     
     public function get score():String

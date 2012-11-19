@@ -156,9 +156,10 @@ package engine
     {
       var sides = poly.length, origin = new Point(0, p.y), hits = 0, s1, s2, i;
       
+	
       // Test intersection of an external ray against each polygon side.
-      for (i = 0; i < sides; i++)
-      {
+      for (var i = 0; i < sides; i++)
+      {  
         s1 = poly[i];
         s2 = poly[(i + 1) % sides];
         origin.x = Math.min(origin.x, Math.min(s1.x, s2.x) - 1);

@@ -80,7 +80,6 @@ package Menu
       _scroller.setSize(Starling.current.nativeStage.fullScreenWidth, Starling.current.nativeStage.fullScreenHeight);
 	  _scrollable.scaleX = _scrollable.scaleY = Starling.current.nativeStage.fullScreenWidth / AssetRegistry.STAGE_WIDTH;
 	  
-	 
       _scrollable.addEventListener(TouchEvent.TOUCH, onTouch);
       
       addChild(_scroller);
@@ -95,6 +94,9 @@ package Menu
       if (touch)
       {
         _tempPoint = touch.getLocation(_scrollable);
+		
+		//_tempPoint.x = _tempPoint.x * _scrollable.scaleX;
+		//_tempPoint.y = _tempPoint.y * _scrollable.scaleY;
       }
       
       touch = e.getTouch(_scrollable, TouchPhase.ENDED);
@@ -102,11 +104,13 @@ package Menu
       {
         trace("Clicked");
         var p:Point = touch.getLocation(_scrollable);
+		//p.x = p.x * _scrollable.scaleX;
+		//p.y = p.y * _scrollable.scaleY;
         
         // Did not scroll to far, probably a click.
         if (Math.abs(p.y - _tempPoint.y) < 50)
         {
-          p.y += _scroller.verticalScrollPosition;
+          p.y = p.y + _scroller.verticalScrollPosition / _scrollable.scaleY;
           trace(p);
           
           for each (var obj:Object in _boxes)

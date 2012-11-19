@@ -14,10 +14,10 @@ goto desktop
 :desktop
 :: http://help.adobe.com/en_US/air/build/WSfffb011ac560372f-6fa6d7e0128cca93d31-8000.html
 
-set SCREEN_SIZE=NexusOne
+::set SCREEN_SIZE=NexusOne
 ::set SCREEN_SIZE=iPhoneRetina
 ::set SCREEN_SIZE=640x1136:640x1136
-::set SCREEN_SIZE=720x1280:720x1280
+set SCREEN_SIZE=720x1280:720x1280
 ::set SCREEN_SIZE=iPhone
 ::set SCREEN_SIZE=iPad
 ::set SCREEN_SIZE=QVGA

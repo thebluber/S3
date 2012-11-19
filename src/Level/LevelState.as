@@ -253,7 +253,7 @@ package Level
       _UIStage.addChild(_textLayer);
       
 
-	  createSadAndEvilSnake();
+	  
      
       //create bonusbar
       createBonusBar();
@@ -279,7 +279,7 @@ package Level
 		_center.y = AssetRegistry.STAGE_HEIGHT / 2;
 	  }
 	    showObjective();  
-		
+		createSadAndEvilSnake();
       
     }
     
@@ -287,19 +287,19 @@ package Level
     {
       _sadSnake = new Image(AssetRegistry.UIAtlas.getTexture("sadsnake"));
       _sadSnake.x = _center.x - _sadSnake.width / 2;       
-      _sadSnake.touchable = false;
+      _sadSnake.touchable = true;
       
       _sadText = new Image(AssetRegistry.UIAtlas.getTexture("SadSnakeText"));
       _sadText.x = _center.x - _sadText.width / 2;      
-      _sadText.touchable = false;
+      _sadText.touchable = true;
       
       _evilSnake = new Image(AssetRegistry.UIAtlas.getTexture("snake_evillaugh"));
       _evilSnake.x = _center.x - _evilSnake.width / 2;      
-      _evilSnake.touchable = false;
+      _evilSnake.touchable = true;
           
       _evilText = new Image(AssetRegistry.UIAtlas.getTexture("Snake_EvilLaughText"));
       _evilText.x = _center.x - _evilText.width / 2;      
-      _evilText.touchable = false;
+      _evilText.touchable = true;
     }
     
     public function extendTime():void
@@ -428,6 +428,8 @@ package Level
       
       _sadText.y = -_sadText.height;
       
+	  _mchammer.touchable = true;
+	  addChild(_mchammer);
       _UIStage.addChild(_sadSnake);
       _UIStage.addChild(_sadText);
       
@@ -495,6 +497,7 @@ package Level
       {
         _UIStage.removeChild(_sadSnake);
         _UIStage.removeChild(_sadText);
+		removeChild(_mchammer);
         
         removeEventListener(TouchEvent.TOUCH, dieScreenTouch);
         resetSnake();

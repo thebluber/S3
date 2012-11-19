@@ -153,7 +153,7 @@ package Level
     
     private static const SilentSoundTransform:SoundTransform = new SoundTransform(0);
     
-    private static const WINDOW:Number = 100;
+    private static var WINDOW:Number;
     
     private static const PAUSEMAIN:String = "MAIN";
     
@@ -175,10 +175,15 @@ package Level
       super();
       this.unscaled = true;
 	  
+	
 	  //adjust zoom factor
 	  var ratio:Number = Starling.current.nativeStage.fullScreenWidth / AssetRegistry.STAGE_WIDTH;
 	  _zoom =  2 * ratio;
-	  
+	  if (Starling.current.nativeStage.fullScreenWidth < 600) {
+		WINDOW = 50;
+	  } else {
+		WINDOW = 100;
+	  }
       AssetRegistry.loadGraphics([AssetRegistry.MENU, AssetRegistry.SNAKE, AssetRegistry.SCORING]);
       _center = new Point(Starling.current.nativeStage.fullScreenWidth / 2, Starling.current.nativeStage.fullScreenHeight / 2);
       setSpeed();
